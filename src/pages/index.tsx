@@ -1,12 +1,30 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Instagram() {
-  const { data: sessionData } = useSession();
+  const { data: sessionData,status:status } = useSession();
+  const router=useRouter();
+  const {error}=router.query;
 
   // User should be promted to login after sometime so that we can check createdAt
   //Instagram route
   //hidden element to ksjf38949.tsx
+  if(status==="unauthenticated"){
+    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4">
+        {error && <div className="text-red-600">Please use nmamit email to login</div>}
+        <button className="bg-black rounded-lg shadow-lg text-white px-4 py-2"
+        onClick={()=>signIn("google")}>Sign in</button>
+    </main>;
+  }
+    if(status==="loading"){
+        return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4">
+            <div className="text-2xl">Loading...</div>
+        </main>;
+    }
+    else{
+        router.replace({pathname:router.pathname,query:""},undefined,{shallow:true}).catch((e)=>console.error(e));
   return (
     <>
       <Head>
@@ -79,15 +97,15 @@ export default function Instagram() {
                 </button>
               </div>
             </div>
-            <a
+            <Link
               href="/kjsf38949"
               className="flex justify-center text-xs text-white"
             >
               Click here
-            </a>
+            </Link>
             <div className="mb-4 border border-gray-300 px-10 py-6">
               <div className="flex items-center justify-center space-x-2 text-sm">
-                <p className="text-gray-700">Don't have an account?</p>
+                <p className="text-gray-700">Don&apos;t have an account?</p>
                 <a href="#" className="font-semibold text-[#4CB5F9]">
                   Sign up
                 </a>
@@ -189,4 +207,5 @@ export default function Instagram() {
       </main>
     </>
   );
+    }
 }

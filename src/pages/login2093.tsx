@@ -1,7 +1,5 @@
-import { useParams } from "next/navigation";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { number } from "zod";
 
 interface LoginPageContent {
   loginTitle: string;
