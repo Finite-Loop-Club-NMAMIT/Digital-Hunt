@@ -60,3 +60,11 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model MailBox{
+    id String @id @default(cuid())
+    name String
+    subject String
+    body String
+    publicUrl String?
+}
