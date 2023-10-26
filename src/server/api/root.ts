@@ -1,6 +1,6 @@
 import { createTRPCRouter } from "~/server/api/trpc";
 import { mailBoxRouter } from "./routers/mailbox";
-import { submissionsRouter } from "./routers/getSubmitions";
+import { admin } from "./routers/admin";
 /**
  * This is the primary router for your server.
  *
@@ -8,7 +8,7 @@ import { submissionsRouter } from "./routers/getSubmitions";
  */
 export const appRouter = createTRPCRouter({
     mailBoxRouter,
-    submissionsRouter
+    admin
 });
 
 // export type definition of API

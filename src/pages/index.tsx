@@ -2,10 +2,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { api } from "~/utils/api";
 
 export default function Instagram() {
-  const getSubmissions = api.submissionsRouter.getSubmissions.useQuery()
   const { data: sessionData, status: status } = useSession();
   const router = useRouter();
   const { error } = router.query;
@@ -55,10 +53,7 @@ export default function Instagram() {
               />
             </section>
 
-            <button onClick={
-              () => console.log(getSubmissions.data)
-
-            }></button>
+           
             <section className="w-[18%]">
               <div className="border border-gray-300 px-10 pb-4 pt-12">
                 <h1 title="Instagram" className="flex justify-center pb-10">
