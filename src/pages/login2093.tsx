@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Head from "next/head";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface LoginPageContent {
   loginTitle: string;
@@ -29,6 +31,9 @@ export default function Login() {
     usernamePlaceholder: "Tbpxa dg Ewdct",
     passwordPlaceholder: "***********",
   }));
+
+  const sitekey = process.env.SITE_KEY;
+  console.log(sitekey);
   const changeWords = (str: string, value: number) => {
     let result = "";
     for (const char of str) {
@@ -69,6 +74,11 @@ export default function Login() {
     };
     setLoginContent(() => p);
   };
+
+  function onChange() {
+    location.reload();
+  }
+
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center">
       <section className="w-1/3 rounded-xl bg-gray-100 px-10 py-6 shadow-xl">
@@ -122,6 +132,8 @@ export default function Login() {
           </select>
         </section>
       </section>
+
+      <ReCAPTCHA sitekey={`${sitekey}`} onChange={onChange} type="image" />
     </main>
   );
 }
