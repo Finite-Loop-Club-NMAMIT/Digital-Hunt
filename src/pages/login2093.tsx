@@ -22,9 +22,12 @@ export default function Login() {
   // cookies we hide playfair cipher key
   // successfull login leads to mail page where we get list of mails
   const router = useRouter();
-  const { user } = router.query;
+  const { user, error } = router.query;
   const [cipherKey, setCipherKey] = useState<number>(() => 0);
-  const [encryptedPassword, setEncryptedPassword] = useState<string>(() => "Try different number of shifts");
+  const [captchaSolved, setCaptchaSolved] = useState<boolean>(() => false);
+  const [encryptedPassword, setEncryptedPassword] = useState<string>(
+    () => "Try different number of shifts",
+  );
   const [loginContent, setLoginContent] = useState<LoginPageContent>(() => ({
     loginTitle: "Advxc",
     username: "Jhtgcpbt",
@@ -33,9 +36,9 @@ export default function Login() {
     usernamePlaceholder: "Tbpxa dg Ewdct",
     passwordPlaceholder: "***********",
   }));
-  const recaptcha=useRef<ReCAPTCHA>(null)
-//   const sitekey = process.env.SITE_KEY;
-//   console.log(sitekey);
+  const recaptcha = useRef<ReCAPTCHA>(null);
+  //   const sitekey = process.env.SITE_KEY;
+  //   console.log(sitekey);
   const changeWords = (str: string, value: number) => {
     let result = "";
     for (const char of str) {
@@ -77,15 +80,19 @@ export default function Login() {
     setLoginContent(() => p);
   };
 
-
   function onChange() {
-    // location.reload();
+    if (recaptcha.current !== null) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      if (recaptcha.current.getValue()) setCaptchaSolved(true);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      recaptcha.current.reset();
+    }
   }
   useEffect(() => {
-    if(cipherKey===11){
-        setEncryptedPassword("FVMUIKLY")
+    if (cipherKey === 11) {
+      setEncryptedPassword("FVMUIKLY");
     }
-  },[cipherKey])
+  }, [cipherKey]);
 
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center">
@@ -93,7 +100,7 @@ export default function Login() {
         <h2 className="text-center text-5xl font-semibold text-black">
           {loginContent.loginTitle}
         </h2>
-
+        {error && <div className="text-center text-red-600 text-sm">wrong password</div>}
         <form
           method="post"
           action="/api/login2093"
@@ -104,7 +111,7 @@ export default function Login() {
             <input
               name="password"
               type="password"
-              placeholder={loginContent.passwordPlaceholder}
+              placeholder={loginContent.usernamePlaceholder}
             />
           </span>
           {user !== "admin" && (
@@ -114,12 +121,26 @@ export default function Login() {
                 <input
                   name="username"
                   type="text"
-                  placeholder={loginContent.usernamePlaceholder}
+                  placeholder={loginContent.passwordPlaceholder}
                 />
               </span>
             </>
           )}
-          <button type="submit" className="pt-5">
+          <span className="flex flex-col gap-2">
+            {user === "admin" && (
+              <ReCAPTCHA
+                sitekey={env.NEXT_PUBLIC_RECAPTCHA_KEY}
+                onChange={onChange}
+                type="image"
+                ref={recaptcha}
+              />
+            )}
+          </span>
+          <button
+            type="submit"
+            className="pt-5"
+            {...(user !== "admin" || captchaSolved ? { disabled: true } : {})}
+          >
             {loginContent.loginButton}
           </button>
         </form>
@@ -140,9 +161,6 @@ export default function Login() {
           </select>
         </section>
       </section>
-
-    {<ReCAPTCHA sitekey={env.NEXT_PUBLIC_RECAPTCHA_KEY} onChange={onChange} type="image" 
-        ref={recaptcha} />}
     </main>
   );
 }

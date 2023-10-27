@@ -64,7 +64,7 @@ export default function Instagram() {
                                     <td className="border p-5">{element.points1+element.minusPoints1}</td>
                                     <td className="border p-5">{element.points1}</td>
                                     <td className="border p-5">{element.minusPoints1}</td>
-                                    <td className="border p-5">{element.roundOne?.createdAt.toUTCString()}</td>
+                                    <td className="border p-5">{element.roundOne?.updatedAt.toUTCString()}</td>
                                     <td data-userid={element.id} className="border p-5"><button className="border rounded p-3 bg-black text-white" data-userid={element.id} onClick={(e) => decrementRound1(e)}>Reduce score by 10</button></td>
                                 </tr>
                             )
@@ -90,7 +90,7 @@ export default function Instagram() {
                                     <td className="border p-5">{element.points2+element.minusPoints2}</td>
                                     <td className="border p-5">{element.points2}</td>
                                     <td className="border p-5">{element.minusPoints2}</td>
-                                    <td className="border p-5">{element.roundTwo?.createdAt.toUTCString()}</td>
+                                    <td className="border p-5">{element.roundTwo?.updatedAt.toUTCString()}</td>
                                     <td data-userid={element.id} className="border p-5"><button className="border rounded p-3 bg-black text-white" data-userid={element.id} onClick={(e) => decrementRound2(e)}>Reduce score by 10</button></td>
                                 </tr>
                             )
