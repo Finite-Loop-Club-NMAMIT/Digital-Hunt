@@ -1,4 +1,4 @@
-import { createTRPCRouter, protectedProcedure } from '../trpc';
+import { createTRPCRouter, protectedProcedure } from "../trpc";
 import z from "zod";
 
 type sortDataInput = {
@@ -34,6 +34,14 @@ const sort = (data: sortDataInput[], round: number) => {
 export const admin = createTRPCRouter({
   getSubmissions: protectedProcedure.query(async ({ ctx }) => {
     try {
+        const userId = ctx.session.user.id;
+			const user = await ctx.db.user.findUnique({
+				where: {
+					id: userId,
+				},
+			});
+        if (user?.role !== "ORGANIZER") 
+            throw {type:"Not permitted", message:"Oops! you cannot access this resource"};
       const data = await ctx.db.user.findMany({
         select: {
           id: true,
@@ -56,8 +64,8 @@ export const admin = createTRPCRouter({
         roundTwoSorted
       };
     } catch (e) {
-      console.log(e);
-      throw new Error("An error occurred!");
+        console.log(e);
+        throw new Error("An error occurred!");
     }
   }),
   reduceScoreRound1: protectedProcedure.input(z.object({
@@ -91,5 +99,4 @@ export const admin = createTRPCRouter({
       console.log(e);
       throw new Error("An error occurred!");
     }
-  })
-});
+  })});
