@@ -1,15 +1,15 @@
-const generateHash = (userId:string)=>{
+const generateHash = (name: string) => {
 	let hash = 0;
-	for(let i=0; i < userId.length; i++){
-		hash+=userId.charCodeAt(i);
+	for (let i = 0; i < name.length; i++) {
+		hash += name.charCodeAt(i);
 	}
 	return hash;
-}
+};
 
-const getFileNumber=(userId:string)=>{
-	const hash = generateHash(userId);
-	const fileNumber = hash.toString().charCodeAt(0) % 5;
-	return {fileNumber, hash};
-}
+const getFileNumber = (name: string) => {
+	const hash = generateHash(name);
+	const fileNumber = (hash.toString().charCodeAt(0)) % 5;
+	return { fileNumber, hash };
+};
 
-export {getFileNumber}
+export { getFileNumber };

@@ -117,6 +117,9 @@ model FileAssigned{
 	hash String
 	fileId String
 	user User	@relation(fields: [userId], references: [id])
+
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
 }
 enum ROLES {
     ORGANIZER
