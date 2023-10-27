@@ -1,12 +1,12 @@
 import { getFileNumber } from "~/utils/hash";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
-import { env } from "~/env.mjs";
+
 export const files = createTRPCRouter({
 	getFile: protectedProcedure.query(async ({ ctx }) => {
 		try {
 			const { fileNumber, hash } = getFileNumber(ctx.session.user.id);
-			console.log(env.ZIP_FILES);
-			const fileLinks = {
+			// console.log(env.ZIP_FILES);
+			const fileLinks: Record<string, string>  = {
 				"0": "1rUf5pCN-K-_v73Hev5ILjn59-IR90DMw",
 				"1": "1-S4ONWCzpyMJDyRz-H4E-9VBRR2gPSJH",
 				"2": "1Ul3gROkOv6lclUCVRH5NS7cKftu0S3wX",
@@ -22,7 +22,7 @@ export const files = createTRPCRouter({
 						connect: { id: ctx.session.user.id },
 					},
 					hash: hash.toString(),
-					fileId: fileLinks[fileNumber],
+					fileId: fileLinks[fileNumber] ?? "",
 				},
 			});
 			return downloadLink;
