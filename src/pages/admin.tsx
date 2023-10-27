@@ -47,12 +47,15 @@ export default function Instagram() {
                 <div className="w-fit m-auto">
                     <h1 className="text-extrabold mt-10">Round 1</h1>
                     <table className="border">
-                        <th className="p-3 border">UserID</th>
-                        <th className="p-3 border">Name</th>
-                        <th className="p-3 border">Total Points</th>
-                        <th className="p-3 border">Points</th>
-                        <th className="p-3 border">Negative Points</th>
-                        <th className="p-3 border">Submited at</th>
+                        <thead>
+                            <th className="p-3 border">UserID</th>
+                            <th className="p-3 border">Name</th>
+                            <th className="p-3 border">Total Points</th>
+                            <th className="p-3 border">Points</th>
+                            <th className="p-3 border">Negative Points</th>
+                            <th className="p-3 border">Submited at</th>
+                        </thead>
+                        <tbody>
                         {getSubmissions?.roundOneSorted.map((element, key) => {
                             return (
                                 <tr key={key}>
@@ -66,15 +69,19 @@ export default function Instagram() {
                                 </tr>
                             )
                         })}
+                        </tbody>
                     </table>
                     <h1 className="text-extrabold mt-10">Round 2</h1>
                     <table>
-                        <th className="p-3 border">UserID</th>
-                        <th className="p-3 border">Name</th>
-                        <th className="p-3 border">Total Points</th>
-                        <th className="p-3 border">Points</th>
-                        <th className="p-3 border">Negative Points</th>
-                        <th className="p-3 border">Submited at</th>
+                        <thead>
+                            <th className="p-3 border">UserID</th>
+                            <th className="p-3 border">Name</th>
+                            <th className="p-3 border">Total Points</th>
+                            <th className="p-3 border">Points</th>
+                            <th className="p-3 border">Negative Points</th>
+                            <th className="p-3 border">Submited at</th>
+                        </thead>
+                        <tbody>
                         {getSubmissions?.roundTwoSorted.map((element, key) => {
                             return element.roundTwo && (
                                 <tr key={key}>
@@ -88,6 +95,7 @@ export default function Instagram() {
                                 </tr>
                             )
                         })}
+                        </tbody>
                     </table>
                     </div>
             </>
