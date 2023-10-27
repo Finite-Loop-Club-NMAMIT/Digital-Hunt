@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import Image from "next/image";
 
 export default function Scroll() {
   //scroll down infinite ads, scroll to go to login page with query parameter user=guest
@@ -70,10 +71,12 @@ export default function Scroll() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {images.map((image, index) => (
               <div key={index}>
-                <img
+                <Image
                   src={image}
                   alt={`Image ${index}`}
                   className="h-auto w-full"
+                  height={300}
+                  width={300}
                 />
               </div>
             ))}

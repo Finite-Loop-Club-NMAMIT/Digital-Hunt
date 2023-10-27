@@ -24,7 +24,7 @@ export default function Instagram() {
     </main>;
   }
   else {
-    router.replace({ pathname: router.pathname, query: "" }, undefined, { shallow: true }).catch((e) => console.error(e));
+    // router.replace({ pathname: router.pathname, query: "" }, undefined, { shallow: true }).catch((e) => console.error(e))
     return (
       <>
         <Head>
