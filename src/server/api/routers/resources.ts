@@ -4,7 +4,9 @@ import z from "zod";
 export const files = createTRPCRouter({
 	getFile: protectedProcedure.query(async ({ ctx }) => {
 		try {
-			const { fileNumber, hash } = getFileNumber(z.string().parse(ctx.session.user.name));
+			const { fileNumber, hash } = getFileNumber(
+				z.string().parse(ctx.session.user.name)
+			);
 			const fileLinks = [
 				"1JUMuMtqb-IwUKbjVnMiWaToMpPYx_Psg",
 				"1C_OaonobyVeObKoeqmbaMlof2GhuCzAI",
