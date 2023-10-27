@@ -54,6 +54,8 @@ model User {
     sessions      Session[]
     points1        Int       @default(0)
     points2        Int       @default(0)
+    minusPoints1   Int       @default(0)
+    minusPoints2   Int       @default(0)
     roundOne      RoundOne?
     roundTwo      RoundTwo?
 }
