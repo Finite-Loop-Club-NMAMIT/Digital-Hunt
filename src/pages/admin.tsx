@@ -31,7 +31,7 @@ export default function Instagram() {
                                 <tr key={key}>
                                     <td className="border p-5">{element.id}</td>
                                     <td className="border p-5">{element.name}</td>
-                                    <td className="border p-5">{element.points}</td>
+                                    <td className="border p-5">{element.points1}</td>
                                     <td className="border p-5">{element.roundOne?.createdAt.toDateString()}</td>
                                     <td data-userid={element.id} className="border p-5"><button className="border rounded p-3 bg-black text-white" data-userid={element.id} onClick={(e) => handleclick(e)}>Reduce score by 10</button></td>
                                 </tr>
@@ -49,7 +49,7 @@ export default function Instagram() {
                                 <tr key={key}>
                                     <td className="border p-5">{element.id}</td>
                                     <td className="border p-5">{element.name}</td>
-                                    <td className="border p-5">{element.points}</td>
+                                    <td className="border p-5">{element.points1}</td>
                                     <td className="border p-5">{element.roundTwo?.createdAt.toDateString()}</td>
                                     <td data-userid={element.id} className="border p-5"><button className="border rounded p-3 bg-black text-white" data-userid={element.id} onClick={(e) => handleclick(e)}>Reduce score by 10</button></td>
                                 </tr>
