@@ -1,15 +1,19 @@
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { z } from "zod";
 import { api } from "~/utils/api";
 
 export default function Instagram() {
-    const { data: sessionData, status: status } = useSession();
-    const router = useRouter();
+    const { data: sessionData } = useSession();
     const reduceScore = api.admin.reduceScore.useMutation()
     const getSubmissions = api.admin.getSubmissions.useQuery().data
-    function handleclick(e: Event) {
-        reduceScore.mutate({ userid: z.string().parse(e.target.dataset.userid) })
+    // function handleclick(e: Event) {
+    function handleclick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        // reduceScore.mutate({ userid: z.string().parse(e.target.dataset.userid) })
+        const userId = (e.target as HTMLElement)?.dataset?.userid;
+        if (userId) 
+            reduceScore.mutate({ userid: z.string().parse(userId) });
+        else
+            console.error('User ID is null or undefined');
     }
     if (sessionData?.user) {
         return (

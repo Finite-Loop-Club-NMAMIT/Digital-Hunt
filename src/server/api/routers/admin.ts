@@ -1,6 +1,5 @@
-import { RoundOne, RoundTwo, User } from '@prisma/client';
 import { createTRPCRouter, protectedProcedure } from '../trpc';
-import z, { string } from "zod"
+import z from "zod"
 
 type sortDataInput = {
   id: string,
@@ -11,20 +10,33 @@ type sortDataInput = {
 }
 const sort = (data: sortDataInput[], round: number) => {
   if (round == 1) {
+    // data.sort((a: sortDataInput, b: sortDataInput) => {
+    //   if (a.points == b.points) return Date.parse(`'${a.roundOne?.createdAt}'`) - Date.parse(`'${b.roundOne?.createdAt}'`);
+    //   return b.points - a.points;
+    // })
     data.sort((a: sortDataInput, b: sortDataInput) => {
-      if (a.points == b.points) return Date.parse(`'${a.roundOne?.createdAt}'`) - Date.parse(`'${b.roundOne?.createdAt}'`);
+      const aCreatedAt = a.roundOne?.createdAt instanceof Date ? a.roundOne?.createdAt.toISOString() : '';
+      const bCreatedAt = b.roundOne?.createdAt instanceof Date ? b.roundOne?.createdAt.toISOString() : '';
+      if (a.points === b.points) return Date.parse(aCreatedAt) - Date.parse(bCreatedAt);
       return b.points - a.points;
-    })
+    });
   }
-  else
+  else {
     data.sort((a: sortDataInput, b: sortDataInput) => {
-      if (a.points == b.points) return Date.parse((`'${a.roundTwo?.createdAt}'`)) - Date.parse(`'${b.roundTwo?.createdAt}'`);
+      const aCreatedAt = a.roundTwo?.createdAt instanceof Date ? a.roundTwo?.createdAt.toISOString() : '';
+      const bCreatedAt = b.roundTwo?.createdAt instanceof Date ? b.roundTwo?.createdAt.toISOString() : '';
+      if (a.points === b.points) return Date.parse(aCreatedAt) - Date.parse(bCreatedAt);
       return b.points - a.points;
-    })
+    });
+    // data.sort((a: sortDataInput, b: sortDataInput) => {
+    //   if (a.points == b.points) return Date.parse((`'${a.roundTwo?.createdAt}'`)) - Date.parse(`'${b.roundTwo?.createdAt}'`);
+    //   return b.points - a.points;
+    // })
+  }
   return data
 }
 export const admin = createTRPCRouter({
-  getSubmissions: protectedProcedure.query(async ({ ctx, input }) => {
+  getSubmissions: protectedProcedure.query(async ({ ctx }) => {
     try {
       const data = await ctx.db.user.findMany({
         select: {

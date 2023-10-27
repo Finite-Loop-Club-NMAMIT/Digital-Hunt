@@ -1,10 +1,11 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Instagram() {
-  const { data: sessionData, status: status } = useSession();
+  const { status: status } = useSession();
   const router = useRouter();
   const { error } = router.query;
 
@@ -46,7 +47,11 @@ export default function Instagram() {
         <main className="flex min-h-screen flex-col justify-between pb-16 pt-28">
           <div className="flex w-full items-center justify-center gap-10">
             <section>
-              <img
+              <Image
+                height={300}
+                width={320}      
+                priority={true}
+                className="w-auto h-auto"
                 src="/assets/phone-static.png"
                 alt="PhoneStatic"
                 title="PhoneStatic"
@@ -57,7 +62,10 @@ export default function Instagram() {
             <section className="w-[18%]">
               <div className="border border-gray-300 px-10 pb-4 pt-12">
                 <h1 title="Instagram" className="flex justify-center pb-10">
-                  <img
+                  <Image
+                    height={0}
+                    width={140}
+                    className="w-auto h-auto"
                     src="/assets/instagram-logo.png"
                     alt="Instagram logo"
                     title="Instagram logo"
@@ -121,22 +129,26 @@ export default function Instagram() {
                       href="https://l.instagram.com/?u=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.instagram.android%26referrer%3Dig_mid%253DC7C20C7E-5A32-45C3-98AF-3F866A3222B3%2526utm_campaign%253DloginPage%2526utm_content%253Dlo%2526utm_source%253Dinstagramweb%2526utm_medium%253Dqr_code%2526original_referrer%253Dhttps%25253A%25252F%25252Fwww.instagram.com%25252F&e=AT2uI_KbHiql1StX6Fq8UnHII_94-Cualyb9_kaI3HYBlm7nb48QxNpLmthQHU-qUftbBnVObnPvQIvhelthyht5TbgrFrS5hg-G6OkEdfC_nDC7kQ1P2g4hcoi6lZQZD4YYhYag5rZwxUbPZ0733zldB66aChX2g5h-Gg"
                       target="_blank"
                     >
-                      <img
+                      <Image
+                        height={0}
+                        width={0}
+                        className="w-auto h-[40px]"
                         src="/assets/googleplay-button.png"
                         alt="GooglePlayButton"
                         title="GooglePlayButton"
-                        className="h-[40px]"
                       />
                     </a>
                     <a
                       href="ms-windows-store://pdp/?productid=9nblggh5l9xt&referrer=appbadge&source=www.instagram.com&mode=mini&pos=0%2C0%2C1920%2C1032"
                       target="_blank"
                     >
-                      <img
+                      <Image
+                        height={0}
+                        width={0}
+                        className="w-auto h-[40px]"
                         src="/assets/microsoft-button.png"
                         alt="AppStoreButton"
                         title="AppStoreButton"
-                        className="h-[40px]"
                       />
                     </a>
                   </div>
