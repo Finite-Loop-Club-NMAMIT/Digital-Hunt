@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { api } from "~/utils/api"
+import { UserCircle2Icon } from "lucide-react"
 
 export default function MailBox(){
     const {data:mails}=api.mailBoxRouter.getAllMails.useQuery()
@@ -15,7 +16,7 @@ export default function MailBox(){
                                     <Link  href={mail.publicUrl?mail.publicUrl:"/"}>
                                         <div className="flex items-center space-x-4">
                                             <div className="flex-shrink-0">
-                                                <img className="w-10 h-10 rounded-full" src="https://res.cloudinary.com/dg7etzwks/image/upload/v1689588259/extras/userIcon_dhf5ym.png" alt="user image" />
+                                                <UserCircle2Icon size={40} className="text-[#10b981]"/>
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <p className="text-sm font-medium text-blue-900 truncate dark:text-white">

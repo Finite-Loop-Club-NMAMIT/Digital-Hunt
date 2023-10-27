@@ -41,7 +41,7 @@ export default function Scroll() {
     for (let i = 0; i < 10; i++) {
       addRandomImage();
     }
-  }, []);
+  });
 
   useEffect(() => {
     const handleScroll = () => {
