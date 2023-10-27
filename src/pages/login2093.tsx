@@ -29,7 +29,6 @@ export default function Login() {
     usernamePlaceholder: "Tbpxa dg Ewdct",
     passwordPlaceholder: "***********",
   }));
-
   const changeWords = (str: string, value: number) => {
     let result = "";
     for (const char of str) {
@@ -71,35 +70,6 @@ export default function Login() {
     setLoginContent(() => p);
   };
   return (
-    // <main>
-    //   <h2>{loginContent.loginTitle}</h2>
-    //   <label htmlFor="cipher">Try different number of shifts</label>
-    // <select
-    //   name="cipher"
-    //   value={cipherKey}
-    //   onChange={(e) => changeCipher(Number(e.target.value))}
-    // >
-    //   {[...Array(26).keys()].map((i: number, key: number) => (
-    //     <option value={i} key={key}>
-    //       {i}
-    //     </option>
-    //   ))}
-    // </select>
-
-    // <form method="post" action="/api/login2093">
-    //   <label htmlFor="password">{loginContent.password}</label>
-    //   <input name="password" type="password" placeholder={loginContent.passwordPlaceholder} />
-    //   {user !== "admin" && (
-    //       <>
-    //       <label htmlFor="username">{loginContent.username}</label>
-    //       <input name="username" type="text" placeholder={loginContent.usernamePlaceholder} />
-
-    //       </>
-    //   )}
-    //   <button type="submit">{loginContent.loginButton}</button>
-    // </form>
-    // </main>
-
     <main className="flex h-screen w-full flex-col items-center justify-center">
       <section className="w-1/3 rounded-xl bg-gray-100 px-10 py-6 shadow-xl">
         <h2 className="text-center text-5xl font-semibold text-black">

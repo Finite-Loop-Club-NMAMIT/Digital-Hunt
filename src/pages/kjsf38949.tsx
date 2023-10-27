@@ -72,11 +72,11 @@ export default function Scroll() {
             {images.map((image, index) => (
               <div key={index}>
                 <Image
-                  height={0}
-                  width={0}
                   src={image}
                   alt={`Image ${index}`}
                   className="h-auto w-full"
+                  height={300}
+                  width={300}
                 />
               </div>
             ))}
