@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import Head from "next/head";
-import ReCAPTCHA, { ReCAPTCHAProps } from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import { env } from "~/env.mjs";
 
 interface LoginPageContent {
