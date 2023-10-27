@@ -5,7 +5,7 @@ export const files = createTRPCRouter({
 	getFile: protectedProcedure.query(async ({ ctx }) => {
 		try {
 			const { fileNumber, hash } = getFileNumber(ctx.session.user.id);
-			const fileLinks = {
+			const fileLinks:Record<string,string> = {
 				"0": "1JUMuMtqb-IwUKbjVnMiWaToMpPYx_Psg",
 				"1": "1C_OaonobyVeObKoeqmbaMlof2GhuCzAI",
 				"2": "1Ul3gROkOv6lclUCVRH5NS7cKftu0S3wX",
