@@ -101,7 +101,7 @@ export default function Login() {
         </h2>
         {error && <div className="text-center text-red-600 text-sm">wrong password</div>}
         <form
-          method="post"
+          method="POST"
           action="/api/login2093"
           className="flex flex-col gap-5 pt-8"
         >
