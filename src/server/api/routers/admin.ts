@@ -1,6 +1,5 @@
-import { RoundOne, RoundTwo, User } from '@prisma/client';
 import { createTRPCRouter, protectedProcedure } from '../trpc';
-import z, { string } from "zod"
+import z from "zod"
 
 type sortDataInput = {
   id: string,
