@@ -1,6 +1,7 @@
 import { createTRPCRouter } from "~/server/api/trpc";
 import { mailBoxRouter } from "./routers/mailbox";
 import { admin } from "./routers/admin";
+import { files } from "./routers/resources";
 import { round1Router } from "./routers/round1";
 import { round2Router } from "./routers/round2";
 /**
@@ -11,6 +12,7 @@ import { round2Router } from "./routers/round2";
 export const appRouter = createTRPCRouter({
     mailBoxRouter,
     admin,
+	files,
     round1:round1Router,
     round2:round2Router,
 });
