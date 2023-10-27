@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA, { ReCAPTCHAProps } from "react-google-recaptcha";
+import { env } from "~/env.mjs";
 
 interface LoginPageContent {
   loginTitle: string;
@@ -23,6 +24,7 @@ export default function Login() {
   const router = useRouter();
   const { user } = router.query;
   const [cipherKey, setCipherKey] = useState<number>(() => 0);
+  const [encryptedPassword, setEncryptedPassword] = useState<string>(() => "Try different number of shifts");
   const [loginContent, setLoginContent] = useState<LoginPageContent>(() => ({
     loginTitle: "Advxc",
     username: "Jhtgcpbt",
@@ -31,9 +33,9 @@ export default function Login() {
     usernamePlaceholder: "Tbpxa dg Ewdct",
     passwordPlaceholder: "***********",
   }));
-
-  const sitekey = process.env.SITE_KEY;
-  console.log(sitekey);
+  const recaptcha=useRef<ReCAPTCHA>(null)
+//   const sitekey = process.env.SITE_KEY;
+//   console.log(sitekey);
   const changeWords = (str: string, value: number) => {
     let result = "";
     for (const char of str) {
@@ -75,9 +77,15 @@ export default function Login() {
     setLoginContent(() => p);
   };
 
+
   function onChange() {
-    location.reload();
+    // location.reload();
   }
+  useEffect(() => {
+    if(cipherKey===11){
+        setEncryptedPassword("FVMUIKLY")
+    }
+  },[cipherKey])
 
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center">
@@ -117,7 +125,7 @@ export default function Login() {
         </form>
 
         <section className="space-x-4 pt-5">
-          <label htmlFor="cipher">Try different number of shifts</label>
+          <label htmlFor="cipher">{encryptedPassword}</label>
 
           <select
             name="cipher"
@@ -133,7 +141,8 @@ export default function Login() {
         </section>
       </section>
 
-      <ReCAPTCHA sitekey={`${sitekey}`} onChange={onChange} type="image" />
+    {<ReCAPTCHA sitekey={env.NEXT_PUBLIC_RECAPTCHA_KEY} onChange={onChange} type="image" 
+        ref={recaptcha} />}
     </main>
   );
 }
