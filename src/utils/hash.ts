@@ -8,7 +8,8 @@ const generateHash = (name: string) => {
 
 const getFileNumber = (name: string) => {
 	const hash = generateHash(name);
-	const fileNumber = (hash.toString().charCodeAt(0)) % 5;
+	// const fileNumber = (hash.toString().charCodeAt(0)) % 5;
+	const fileNumber = hash % 5;
 	return { fileNumber, hash };
 };
 

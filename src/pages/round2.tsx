@@ -107,7 +107,7 @@ export default function Round2() {
                     return { ...p, hexahue: e.target.value };
                   })
                 }
-                placeholder="Intermediate asciiResult"
+                placeholder="** ** ** ** ** ** ** ** ** ** **"
                 className=" pl-2"
               />
             </div>
