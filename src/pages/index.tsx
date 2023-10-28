@@ -9,6 +9,7 @@ export default function Instagram() {
   const router = useRouter();
   const { error } = router.query;
 
+
   // User should be promted to login after sometime so that we can check createdAt
   //Instagram route
   //hidden element to ksjf38949.tsx
@@ -72,24 +73,26 @@ export default function Instagram() {
                   />
                 </h1>
 
-                <section className="space-y-4">
+                <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Security alert! We have your username and password!! Just kidding, don't reveal your passwords like this :)")}}>
                   <div className="grid grid-cols-1 gap-2 text-xs">
                     <input
                       type="text"
                       placeholder="Phone number, username, or email"
                       className="rounded-sm border border-gray-300 px-2 py-1"
+                      required
                     />
                     <input
-                      type="text"
+                      type="password"
                       placeholder="Password"
                       className="rounded-sm border border-gray-300 px-2 py-1"
+                      required
                     />
                   </div>
 
-                  <button className="w-full rounded-lg bg-[#4CB5F9] py-2 text-sm font-bold text-white">
+                  <button className="w-full rounded-lg bg-[#4CB5F9] py-2 text-sm font-bold text-white" type="submit">
                     Log in
                   </button>
-                </section>
+                </form>
 
                 <div className="flex items-center justify-center py-4">
                   <span className="w-full border-b border-gray-300"></span>
