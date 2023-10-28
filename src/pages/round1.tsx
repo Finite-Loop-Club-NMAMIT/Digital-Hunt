@@ -216,7 +216,7 @@ export default function Round1() {
                 value={form.hackerLocation}
                 onChange={(e) =>
                   setForm((p) => {
-                    return { ...p, hackLocation: e.target.value };
+                    return { ...p, hackerLocation: e.target.value };
                   })
                 }
                 placeholder="Hacker location"
