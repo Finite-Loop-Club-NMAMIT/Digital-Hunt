@@ -43,6 +43,9 @@ export const admin = createTRPCRouter({
         if (user?.role !== "ORGANIZER") 
             throw {type:"Not permitted", message:"Oops! you cannot access this resource"};
       const data = await ctx.db.user.findMany({
+		  where:{
+			  role:"PARTICIPANT"
+		  },
         select: {
           id: true,
           name: true,
