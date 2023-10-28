@@ -30,7 +30,8 @@ export default function MailBox(){
                                                 </p>
                                             </div>
                                             <div className="inline-flex items-center text-sm font-semibold text-gray-600 dark:text-white">
-                                                {Math.floor(Math.random() * 12)}:{Math.floor(Math.random() * 60)} AM
+                                                {/* {Math.floor(Math.random() * 12)}:{Math.floor(Math.random() * 60)} AM */}
+                                                {Math.floor(Math.random() * (18 - 8 + 1))}:{String(Math.floor(Math.random() * 60)).padStart(2, '0')} {Math.random() < 0.5 ? 'AM' : 'PM'}
                                             </div>
                                         </div>
                                     </Link>
