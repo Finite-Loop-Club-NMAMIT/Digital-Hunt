@@ -32,6 +32,31 @@ export const env = createEnv({
 		GOOGLE_CLIENT_ID: z.string(),
 		GOOGLE_CLIENT_SECRET: z.string(),
 		GOOGLE_RECAPTCHA_SECRET: z.string(),
+        ROUND1_ANSWERS:z.object({
+            hiddenRoute: z.string().nullable(),
+            loginRoute: z.string().nullable(),
+            shifts: z.string().nullable(),
+            playfairKey: z.string().nullable(),
+            passcode: z.string().nullable(),
+            captchaSolved: z.boolean().nullable(),
+            hackerName: z.string().nullable(),
+            hackerLocation: z.string().nullable(),
+            hackerPin: z.string().nullable(),
+            directEntry: z.string().nullable(),
+        }),
+        ROUND2_ANSWERS:z.object({
+            firstWord: z.string().nullable(),
+            secondWord: z.string().nullable(),
+            thirdWord: z.string().nullable(),
+            latitude: z.string().nullable(),
+            longitude: z.string().nullable(),
+            hexahue: z.string().nullable(),
+            asciiResult: z.string().nullable(),
+            badge: z.array(z.string())
+        }),
+        ETHEREAL_EMAIL:z.string(),
+        ETHEREAL_PASSWORD:z.string(),
+        
 	},
 
 	/**
@@ -57,6 +82,12 @@ export const env = createEnv({
 		GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
 		NEXT_PUBLIC_RECAPTCHA_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_KEY,
 		GOOGLE_RECAPTCHA_SECRET: process.env.GOOGLE_RECAPTCHA_SECRET,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        ROUND2_ANSWERS:process.env.ROUND2_ANSWERS?JSON.parse(process.env.ROUND2_ANSWERS):{},
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        ROUND1_ANSWERS:process.env.ROUND1_ANSWERS?JSON.parse(process.env.ROUND1_ANSWERS):{},
+        ETHEREAL_EMAIL:process.env.ETHEREAL_EMAIL,
+        ETHEREAL_PASSWORD:process.env.ETHEREAL_PASSWORD,
 	},
 	/**
 	 * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
