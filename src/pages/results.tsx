@@ -14,7 +14,7 @@ export default function Results() {
     }
   };
 
-    const [timeLeft, setTimeLeft] = useState(300);
+    const [timeLeft, setTimeLeft] = useState(10);
     const [timerActive, setTimerActive] = useState(true);
 
     useEffect(() => {

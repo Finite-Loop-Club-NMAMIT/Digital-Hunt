@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 export default function Scroll() {
   //scroll down infinite ads, scroll to go to login page with query parameter user=guest
   const [images, setImages] = useState<string[]>([]);
+  let upScroll=3;
 
   const imagePaths = [
     "/assets/ads/1.jpeg",
@@ -42,20 +44,37 @@ export default function Scroll() {
       addRandomImage();
     }
   }, []);
+  const handleScroll = useCallback(() => {
+    if (window.scrollY === 0) {
+      console.log(upScroll)
+      if (upScroll === 0) router.push("/login2093?user=guest");
+      else {
+          upScroll-=1
+        setImages(
+          (prevImages) =>
+            [
+              getRandomImage(),
+              getRandomImage(),
+              getRandomImage(),
+              getRandomImage(),
+              getRandomImage(),
+              ,
+              ...prevImages,
+            ].filter(Boolean) as string[],
+        );
+      }
+    } else if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 100
+    ) {
+      for (let i = 0; i < 5; i++) {
+        addRandomImage();
+      }
+    }
+  },[router,upScroll])
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        router.push("/login2093?user=guest");
-      } else if (
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 100
-      ) {
-        for (let i = 0; i < 5; i++) {
-          addRandomImage();
-        }
-      }
-    };
+
 
     window.addEventListener("scroll", handleScroll);
 
@@ -63,7 +82,15 @@ export default function Scroll() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [router]);
+  const { status: status } = useSession();
 
+  if (status === "unauthenticated") {
+    router.push("/");
+    return <></>;
+  }
+  if (status === "loading") {
+    return <></>;
+  }
   return (
     <>
       <div className="min-h-screen bg-gray-100">

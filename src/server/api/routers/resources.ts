@@ -33,6 +33,16 @@ export const files = createTRPCRouter({
 						fileId: z.string().parse(fileLinks[fileNumber]),
 					},
 				});
+                await ctx.db.roundTwo.upsert({
+                    create:{
+                        user: { connect: { id: ctx.session.user.id } }
+                    },
+                    update:{
+
+                    },
+                    where:{
+                        userId: ctx.session.user.id
+                    }})
 			}
 			return downloadLink;
 		} catch (e) {

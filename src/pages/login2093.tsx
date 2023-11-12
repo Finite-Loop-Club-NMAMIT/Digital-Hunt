@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -92,7 +93,15 @@ export default function Login() {
       setEncryptedPassword("FVMUIKLY");
     }
   }, [cipherKey]);
+  const { status: status } = useSession();
 
+  if (status === "unauthenticated") {
+    router.push("/",undefined).catch((e)=>console.log(e))
+    return <></>
+  }
+  if (status === "loading") {
+    return <></>;
+  }
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center">
       <section className="w-1/3 rounded-xl bg-gray-100 px-10 py-6 shadow-xl">

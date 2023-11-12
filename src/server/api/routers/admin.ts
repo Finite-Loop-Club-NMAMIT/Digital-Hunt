@@ -17,17 +17,18 @@ const sort = (data: sortDataInput[], round: number) => {
     data.sort((a: sortDataInput, b: sortDataInput) => {
       const aCreatedAt = a.roundOne?.updatedAt instanceof Date ? a.roundOne?.updatedAt.toISOString() : '';
       const bCreatedAt = b.roundOne?.updatedAt instanceof Date ? b.roundOne?.updatedAt.toISOString() : '';
-      if (a.points1 -a.minusPoints1 === b.points1-b.minusPoints1) return Date.parse(aCreatedAt) - Date.parse(bCreatedAt);
-      return (b.points1 - b.minusPoints1) - (a.points1-a.minusPoints1);
+      if (a.points1 +a.minusPoints1 === b.points1+b.minusPoints1) return Date.parse(aCreatedAt) - Date.parse(bCreatedAt);
+      return (b.points1 + b.minusPoints1) - (a.points1+a.minusPoints1);
     });
   } else {
     data.sort((a: sortDataInput, b: sortDataInput) => {
       const aCreatedAt = a.roundTwo?.updatedAt instanceof Date ? a.roundTwo?.updatedAt.toISOString() : '';
       const bCreatedAt = b.roundTwo?.updatedAt instanceof Date ? b.roundTwo?.updatedAt.toISOString() : '';
-      if (a.points2 - a.minusPoints2 === b.points2 - b.minusPoints2) return Date.parse(aCreatedAt) - Date.parse(bCreatedAt);
-      return (b.points2 - b.minusPoints2) - (a.points2 - a.minusPoints2);
+      if (a.points2 + a.minusPoints2 === b.points2 + b.minusPoints2) return Date.parse(aCreatedAt) - Date.parse(bCreatedAt);
+      return (b.points2 + b.minusPoints2) - (a.points2 + a.minusPoints2);
     });
   }
+//   console.log(data)
   return data;
 };
 
@@ -60,8 +61,8 @@ export const admin = createTRPCRouter({
         }
       });
 
-      const roundOneSorted = sort(data, 1);
-      const roundTwoSorted = sort(data, 2);
+      const roundOneSorted = sort([...data], 1);
+      const roundTwoSorted = sort([...data], 2);
       return {
         roundOneSorted,
         roundTwoSorted

@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { api } from "~/utils/api";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 interface Round2Content {
   firstWord: string;
@@ -37,6 +39,16 @@ export default function Round2() {
         alert("Error submitting form");
       },
     });
+  }
+
+  const { status: status } = useSession();
+  const router = useRouter();
+
+  if (status === "unauthenticated") {
+    router.push("/", undefined).catch((e) => console.log(e));
+  }
+  if (status === "loading") {
+    return <></>;
   }
   return (
     <>

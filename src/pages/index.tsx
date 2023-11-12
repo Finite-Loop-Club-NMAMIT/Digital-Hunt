@@ -1,4 +1,4 @@
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,13 +46,13 @@ export default function Instagram() {
         </Head>
 
         <main className="flex min-h-screen flex-col justify-between pb-16 pt-28">
-          <div className="flex w-full items-center justify-center gap-10">
+          <div className="flex w-full items-center justify-center sm:gap-10">
             <section>
               <Image
                 height={300}
                 width={320}      
                 priority={true}
-                className="w-auto h-auto"
+                className="w-auto h-auto hidden sm:block"
                 src="/assets/phone-static.png"
                 alt="PhoneStatic"
                 title="PhoneStatic"
@@ -60,7 +60,7 @@ export default function Instagram() {
             </section>
 
            
-            <section className="w-[18%]">
+            <section className="w-[300px] sm:w-[340px]">
               <div className="border border-gray-300 px-10 pb-4 pt-12">
                 <h1 title="Instagram" className="flex justify-center pb-10">
                   <Image
@@ -161,7 +161,7 @@ export default function Instagram() {
           </div>
 
           <footer className="flex flex-col space-y-4">
-            <ul className="flex w-full justify-center space-x-3 text-xs text-gray-500">
+            <ul className="flex w-full flex-wrap justify-center space-x-3 text-xs text-gray-500">
               <a href="https://about.meta.com/" target="_blank">
                 <li>Meta</li>
               </a>
@@ -221,6 +221,8 @@ export default function Instagram() {
             </div>
           </footer>
         </main>
+          <button className="block bg-black rounded-[50px] my-3 m-auto shadow-lg text-white px-4 py-2"
+        onClick={() => signOut()}>Sign Out</button>
       </>
     );
   }
