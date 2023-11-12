@@ -75,6 +75,7 @@ model MailBox {
     subject   String
     body      String
     publicUrl String?
+    updatedAt DateTime @updatedAt
 }
 
 model RoundOne {
