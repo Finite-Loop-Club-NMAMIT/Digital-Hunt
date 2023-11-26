@@ -9,9 +9,11 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7(@prisma/client@5.6.0)(next-auth@4.24.5)
   '@prisma/client':
-<<<<<<< HEAD
     specifier: ^5.6.0
     version: 5.6.0(prisma@5.6.0)
+  '@t3-oss/env-nextjs':
+    specifier: ^0.7.1
+    version: 0.7.1(typescript@5.3.2)(zod@3.22.4)
   '@trpc/client':
     specifier: ^10.44.1
     version: 10.44.1(@trpc/server@10.44.1)
@@ -20,45 +22,16 @@ dependencies:
     version: 10.44.1(@tanstack/react-query@4.32.6)(@trpc/client@10.44.1)(@trpc/react-query@10.44.1)(@trpc/server@10.44.1)(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)
   '@trpc/server':
     specifier: ^10.44.1
-=======
-    specifier: ^5.1.1
-    version: 5.6.0(prisma@5.6.0)
-  '@t3-oss/env-nextjs':
-    specifier: ^0.7.0
-    version: 0.7.1(typescript@5.3.2)(zod@3.22.4)
-  '@tanstack/react-query':
-    specifier: ^4.32.6
-    version: 4.32.6(react-dom@18.2.0)(react@18.2.0)
-  '@trpc/client':
-    specifier: ^10.37.1
-    version: 10.44.1(@trpc/server@10.44.1)
-  '@trpc/next':
-    specifier: ^10.37.1
-    version: 10.44.1(@tanstack/react-query@4.32.6)(@trpc/client@10.44.1)(@trpc/react-query@10.44.1)(@trpc/server@10.44.1)(next@13.5.6)(react-dom@18.2.0)(react@18.2.0)
-  '@trpc/react-query':
-    specifier: ^10.37.1
-    version: 10.44.1(@tanstack/react-query@4.32.6)(@trpc/client@10.44.1)(@trpc/server@10.44.1)(react-dom@18.2.0)(react@18.2.0)
-  '@trpc/server':
-    specifier: ^10.37.1
->>>>>>> 247ffde (fix: dependencies)
     version: 10.44.1
   lucide-react:
     specifier: ^0.293.0
     version: 0.293.0(react@18.2.0)
   next:
-<<<<<<< HEAD
     specifier: ^14.0.3
     version: 14.0.3(react-dom@18.2.0)(react@18.2.0)
   next-auth:
     specifier: ^4.24.5
     version: 4.24.5(next@14.0.3)(nodemailer@6.9.7)(react-dom@18.2.0)(react@18.2.0)
-=======
-    specifier: ^13.5.4
-    version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
-  next-auth:
-    specifier: ^4.23.0
-    version: 4.24.5(next@13.5.6)(nodemailer@6.9.7)(react-dom@18.2.0)(react@18.2.0)
->>>>>>> 247ffde (fix: dependencies)
   nodemailer:
     specifier: ^6.9.7
     version: 6.9.7
@@ -75,43 +48,26 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0(react@18.2.0)
   react-icons:
-<<<<<<< HEAD
     specifier: ^4.12.0
     version: 4.12.0(react@18.2.0)
   superjson:
     specifier: ^2.2.1
     version: 2.2.1
-=======
-    specifier: ^4.11.0
-    version: 4.12.0(react@18.2.0)
-  superjson:
-    specifier: ^1.13.1
-    version: 1.13.3
->>>>>>> 247ffde (fix: dependencies)
   zod:
     specifier: ^3.22.4
     version: 3.22.4
 
 devDependencies:
   '@types/eslint':
-<<<<<<< HEAD
     specifier: ^8.44.7
     version: 8.44.7
   '@types/node':
     specifier: ^20.10.0
     version: 20.10.0
-=======
-    specifier: ^8.44.2
-    version: 8.44.7
-  '@types/node':
-    specifier: ^18.16.0
-    version: 18.18.13
->>>>>>> 247ffde (fix: dependencies)
   '@types/nodemailer':
     specifier: ^6.4.14
     version: 6.4.14
   '@types/react':
-<<<<<<< HEAD
     specifier: ^18.2.38
     version: 18.2.38
   '@types/react-dom':
@@ -152,48 +108,6 @@ devDependencies:
     version: 3.3.5
   typescript:
     specifier: ^5.3.2
-=======
-    specifier: ^18.2.20
-    version: 18.2.38
-  '@types/react-dom':
-    specifier: ^18.2.7
-    version: 18.2.17
-  '@types/react-google-recaptcha':
-    specifier: ^2.1.7
-    version: 2.1.8
-  '@typescript-eslint/eslint-plugin':
-    specifier: ^6.3.0
-    version: 6.12.0(@typescript-eslint/parser@6.12.0)(eslint@8.54.0)(typescript@5.3.2)
-  '@typescript-eslint/parser':
-    specifier: ^6.3.0
-    version: 6.12.0(eslint@8.54.0)(typescript@5.3.2)
-  autoprefixer:
-    specifier: ^10.4.14
-    version: 10.4.16(postcss@8.4.31)
-  eslint:
-    specifier: ^8.47.0
-    version: 8.54.0
-  eslint-config-next:
-    specifier: ^13.5.4
-    version: 13.5.6(eslint@8.54.0)(typescript@5.3.2)
-  postcss:
-    specifier: ^8.4.27
-    version: 8.4.31
-  prettier:
-    specifier: ^3.0.0
-    version: 3.1.0
-  prettier-plugin-tailwindcss:
-    specifier: ^0.5.1
-    version: 0.5.7(prettier@3.1.0)
-  prisma:
-    specifier: ^5.1.1
-    version: 5.6.0
-  tailwindcss:
-    specifier: ^3.3.3
-    version: 3.3.5
-  typescript:
-    specifier: ^5.1.6
->>>>>>> 247ffde (fix: dependencies)
     version: 5.3.2
 
 packages:
@@ -308,7 +222,6 @@ packages:
       next-auth: ^4
     dependencies:
       '@prisma/client': 5.6.0(prisma@5.6.0)
-<<<<<<< HEAD
       next-auth: 4.24.5(next@14.0.3)(nodemailer@6.9.7)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
@@ -318,28 +231,12 @@ packages:
 
   /@next/eslint-plugin-next@14.0.3:
     resolution: {integrity: sha512-j4K0n+DcmQYCVnSAM+UByTVfIHnYQy2ODozfQP+4RdwtRDfobrIvKq1K4Exb2koJ79HSSa7s6B2SA8T/1YR3RA==}
-=======
-      next-auth: 4.24.5(next@13.5.6)(nodemailer@6.9.7)(react-dom@18.2.0)(react@18.2.0)
-    dev: false
-
-  /@next/env@13.5.6:
-    resolution: {integrity: sha512-Yac/bV5sBGkkEXmAX5FWPS9Mmo2rthrOPRQQNfycJPkjUAUclomCPH7QFVCDQ4Mp2k2K1SSM6m0zrxYrOwtFQw==}
-    dev: false
-
-  /@next/eslint-plugin-next@13.5.6:
-    resolution: {integrity: sha512-ng7pU/DDsxPgT6ZPvuprxrkeew3XaRf4LAT4FabaEO/hAbvVx4P7wqnqdbTdDn1kgTvsI4tpIgT4Awn/m0bGbg==}
->>>>>>> 247ffde (fix: dependencies)
     dependencies:
       glob: 7.1.7
     dev: true
 
-<<<<<<< HEAD
   /@next/swc-darwin-arm64@14.0.3:
     resolution: {integrity: sha512-64JbSvi3nbbcEtyitNn2LEDS/hcleAFpHdykpcnrstITFlzFgB/bW0ER5/SJJwUPj+ZPY+z3e+1jAfcczRLVGw==}
-=======
-  /@next/swc-darwin-arm64@13.5.6:
-    resolution: {integrity: sha512-5nvXMzKtZfvcu4BhtV0KH1oGv4XEW+B+jOfmBdpFI3C7FrB/MfujRpWYSBBO64+qbW8pkZiSyQv9eiwnn5VIQA==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -347,13 +244,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-darwin-x64@14.0.3:
     resolution: {integrity: sha512-RkTf+KbAD0SgYdVn1XzqE/+sIxYGB7NLMZRn9I4Z24afrhUpVJx6L8hsRnIwxz3ERE2NFURNliPjJ2QNfnWicQ==}
-=======
-  /@next/swc-darwin-x64@13.5.6:
-    resolution: {integrity: sha512-6cgBfxg98oOCSr4BckWjLLgiVwlL3vlLj8hXg2b+nDgm4bC/qVXXLfpLB9FHdoDu4057hzywbxKvmYGmi7yUzA==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -361,13 +253,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-linux-arm64-gnu@14.0.3:
     resolution: {integrity: sha512-3tBWGgz7M9RKLO6sPWC6c4pAw4geujSwQ7q7Si4d6bo0l6cLs4tmO+lnSwFp1Tm3lxwfMk0SgkJT7EdwYSJvcg==}
-=======
-  /@next/swc-linux-arm64-gnu@13.5.6:
-    resolution: {integrity: sha512-txagBbj1e1w47YQjcKgSU4rRVQ7uF29YpnlHV5xuVUsgCUf2FmyfJ3CPjZUvpIeXCJAoMCFAoGnbtX86BK7+sg==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -375,13 +262,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-linux-arm64-musl@14.0.3:
     resolution: {integrity: sha512-v0v8Kb8j8T23jvVUWZeA2D8+izWspeyeDGNaT2/mTHWp7+37fiNfL8bmBWiOmeumXkacM/AB0XOUQvEbncSnHA==}
-=======
-  /@next/swc-linux-arm64-musl@13.5.6:
-    resolution: {integrity: sha512-cGd+H8amifT86ZldVJtAKDxUqeFyLWW+v2NlBULnLAdWsiuuN8TuhVBt8ZNpCqcAuoruoSWynvMWixTFcroq+Q==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -389,13 +271,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-linux-x64-gnu@14.0.3:
     resolution: {integrity: sha512-VM1aE1tJKLBwMGtyBR21yy+STfl0MapMQnNrXkxeyLs0GFv/kZqXS5Jw/TQ3TSUnbv0QPDf/X8sDXuMtSgG6eg==}
-=======
-  /@next/swc-linux-x64-gnu@13.5.6:
-    resolution: {integrity: sha512-Mc2b4xiIWKXIhBy2NBTwOxGD3nHLmq4keFk+d4/WL5fMsB8XdJRdtUlL87SqVCTSaf1BRuQQf1HvXZcy+rq3Nw==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -403,13 +280,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-linux-x64-musl@14.0.3:
     resolution: {integrity: sha512-64EnmKy18MYFL5CzLaSuUn561hbO1Gk16jM/KHznYP3iCIfF9e3yULtHaMy0D8zbHfxset9LTOv6cuYKJgcOxg==}
-=======
-  /@next/swc-linux-x64-musl@13.5.6:
-    resolution: {integrity: sha512-CFHvP9Qz98NruJiUnCe61O6GveKKHpJLloXbDSWRhqhkJdZD2zU5hG+gtVJR//tyW897izuHpM6Gtf6+sNgJPQ==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -417,13 +289,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-win32-arm64-msvc@14.0.3:
     resolution: {integrity: sha512-WRDp8QrmsL1bbGtsh5GqQ/KWulmrnMBgbnb+59qNTW1kVi1nG/2ndZLkcbs2GX7NpFLlToLRMWSQXmPzQm4tog==}
-=======
-  /@next/swc-win32-arm64-msvc@13.5.6:
-    resolution: {integrity: sha512-aFv1ejfkbS7PUa1qVPwzDHjQWQtknzAZWGTKYIAaS4NMtBlk3VyA6AYn593pqNanlicewqyl2jUhQAaFV/qXsg==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -431,13 +298,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-win32-ia32-msvc@14.0.3:
     resolution: {integrity: sha512-EKffQeqCrj+t6qFFhIFTRoqb2QwX1mU7iTOvMyLbYw3QtqTw9sMwjykyiMlZlrfm2a4fA84+/aeW+PMg1MjuTg==}
-=======
-  /@next/swc-win32-ia32-msvc@13.5.6:
-    resolution: {integrity: sha512-XqqpHgEIlBHvzwG8sp/JXMFkLAfGLqkbVsyN+/Ih1mR8INb6YCc2x/Mbwi6hsAgUnqQztz8cvEbHJUbSl7RHDg==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
@@ -445,13 +307,8 @@ packages:
     dev: false
     optional: true
 
-<<<<<<< HEAD
   /@next/swc-win32-x64-msvc@14.0.3:
     resolution: {integrity: sha512-ERhKPSJ1vQrPiwrs15Pjz/rvDHZmkmvbf/BjPN/UCOI++ODftT0GtasDPi0j+y6PPJi5HsXw+dpRaXUaw4vjuQ==}
-=======
-  /@next/swc-win32-x64-msvc@13.5.6:
-    resolution: {integrity: sha512-Cqfe1YmOS7k+5mGu92nl5ULkzpKuxJrP3+4AEuPmrpFZ3BHxTY3TnHmU1On3bFmFFs6FbTcdF58CCUProGpIGQ==}
->>>>>>> 247ffde (fix: dependencies)
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -517,7 +374,10 @@ packages:
     dev: false
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 795e425 (fix: dependencies)
   /@t3-oss/env-core@0.7.1(typescript@5.3.2)(zod@3.22.4):
     resolution: {integrity: sha512-3+SQt39OlmSaRLqYVFv8uRm1BpFepM5TIiMytRqO9cjH+wB77o6BIJdeyM5h5U4qLBMEzOJWCY4MBaU/rLwbYw==}
     peerDependencies:
@@ -545,7 +405,10 @@ packages:
       zod: 3.22.4
     dev: false
 
+<<<<<<< HEAD
 >>>>>>> 247ffde (fix: dependencies)
+=======
+>>>>>>> 795e425 (fix: dependencies)
   /@tanstack/query-core@4.32.6:
     resolution: {integrity: sha512-YVB+mVWENQwPyv+40qO7flMgKZ0uI41Ph7qXC2Zf1ft5AIGfnXnMZyifB2ghhZ27u+5wm5mlzO4Y6lwwadzxCA==}
     dev: false
@@ -3246,7 +3109,6 @@ packages:
     resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: true
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
