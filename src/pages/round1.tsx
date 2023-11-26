@@ -109,7 +109,7 @@ export default function Round1() {
               />
               {reveal?.hintNo === 1 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
-                  Hint No. 1
+                  Hint No. {reveal.hintNo}
                   <p
                     className={`${
                       reveal.revealed ? "" : "blur-sm"
@@ -164,12 +164,47 @@ export default function Round1() {
                 placeholder="Login route"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
-              <button
-                type="button"
-                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
-              >
-                Get Hint
-              </button>
+              {reveal?.hintNo === 2 ? (
+                <div className="w-full max-w-sm rounded-xl border p-2">
+                  Hint No. {reveal.hintNo}
+                  <p
+                    className={`${
+                      reveal.revealed ? "" : "blur-sm"
+                    } transition duration-1000`}
+                  >
+                    {reveal.revealed
+                      ? q.isLoading
+                        ? "loading..."
+                        : q.data
+                      : "You really thought you could get it just like that?"}
+                  </p>
+                  <button
+                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
+                    type="button"
+                    onClick={() => {
+                      !reveal.revealed && q.mutate({ hintNo: 1 });
+                      reveal.revealed
+                        ? setReveal({ hintNo: null, revealed: false })
+                        : setReveal({ hintNo: 1, revealed: true });
+                    }}
+                  >
+                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                  onClick={() => {
+                    setReveal({
+                      hintNo: 3,
+                      revealed: false,
+                    });
+                  }}
+                >
+                  Get Hint
+                </button>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -186,12 +221,47 @@ export default function Round1() {
                 placeholder="Ceaser cipher key"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
-              <button
-                type="button"
-                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
-              >
-                Get Hint
-              </button>
+              {reveal?.hintNo === 3 ? (
+                <div className="w-full max-w-sm rounded-xl border p-2">
+                  Hint No. {reveal.hintNo}
+                  <p
+                    className={`${
+                      reveal.revealed ? "" : "blur-sm"
+                    } transition duration-1000`}
+                  >
+                    {reveal.revealed
+                      ? q.isLoading
+                        ? "loading..."
+                        : q.data
+                      : "You really thought you could get it just like that?"}
+                  </p>
+                  <button
+                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
+                    type="button"
+                    onClick={() => {
+                      !reveal.revealed && q.mutate({ hintNo: 3 });
+                      reveal.revealed
+                        ? setReveal({ hintNo: null, revealed: false })
+                        : setReveal({ hintNo: 3, revealed: true });
+                    }}
+                  >
+                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                  onClick={() => {
+                    setReveal({
+                      hintNo: 3,
+                      revealed: false,
+                    });
+                  }}
+                >
+                  Get Hint
+                </button>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -208,12 +278,47 @@ export default function Round1() {
                 placeholder="Playfair cipher key"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
-              <button
-                type="button"
-                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
-              >
-                Get Hint
-              </button>
+              {reveal?.hintNo === 4 ? (
+                <div className="w-full max-w-sm rounded-xl border p-2">
+                  Hint No. {reveal.hintNo}
+                  <p
+                    className={`${
+                      reveal.revealed ? "" : "blur-sm"
+                    } transition duration-1000`}
+                  >
+                    {reveal.revealed
+                      ? q.isLoading
+                        ? "loading..."
+                        : q.data
+                      : "You really thought you could get it just like that?"}
+                  </p>
+                  <button
+                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
+                    type="button"
+                    onClick={() => {
+                      !reveal.revealed && q.mutate({ hintNo: 4 });
+                      reveal.revealed
+                        ? setReveal({ hintNo: null, revealed: false })
+                        : setReveal({ hintNo: 4, revealed: true });
+                    }}
+                  >
+                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                  onClick={() => {
+                    setReveal({
+                      hintNo: 4,
+                      revealed: false,
+                    });
+                  }}
+                >
+                  Get Hint
+                </button>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -230,12 +335,47 @@ export default function Round1() {
                 placeholder="Admin password"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
-              <button
-                type="button"
-                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
-              >
-                Get Hint
-              </button>
+              {reveal?.hintNo === 5 ? (
+                <div className="w-full max-w-sm rounded-xl border p-2">
+                  Hint No. {reveal.hintNo}
+                  <p
+                    className={`${
+                      reveal.revealed ? "" : "blur-sm"
+                    } transition duration-1000`}
+                  >
+                    {reveal.revealed
+                      ? q.isLoading
+                        ? "loading..."
+                        : q.data
+                      : "You really thought you could get it just like that?"}
+                  </p>
+                  <button
+                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
+                    type="button"
+                    onClick={() => {
+                      !reveal.revealed && q.mutate({ hintNo: 5 });
+                      reveal.revealed
+                        ? setReveal({ hintNo: null, revealed: false })
+                        : setReveal({ hintNo: 5, revealed: true });
+                    }}
+                  >
+                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                  onClick={() => {
+                    setReveal({
+                      hintNo: 5,
+                      revealed: false,
+                    });
+                  }}
+                >
+                  Get Hint
+                </button>
+              )}
             </div>
           </div>
           <div className="my-5 flex flex-col items-center gap-2">
@@ -243,12 +383,47 @@ export default function Round1() {
               <h2 className="text-center font-semibold">
                 Did you solve the captcha?
               </h2>
-              <button
-                type="button"
-                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
-              >
-                Get Hint
-              </button>
+              {reveal?.hintNo === 6 ? (
+                <div className="w-full max-w-sm rounded-xl border p-2">
+                  Hint No. {reveal.hintNo}
+                  <p
+                    className={`${
+                      reveal.revealed ? "" : "blur-sm"
+                    } transition duration-1000`}
+                  >
+                    {reveal.revealed
+                      ? q.isLoading
+                        ? "loading..."
+                        : q.data
+                      : "You really thought you could get it just like that?"}
+                  </p>
+                  <button
+                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
+                    type="button"
+                    onClick={() => {
+                      !reveal.revealed && q.mutate({ hintNo: 6 });
+                      reveal.revealed
+                        ? setReveal({ hintNo: null, revealed: false })
+                        : setReveal({ hintNo: 6, revealed: true });
+                    }}
+                  >
+                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                  onClick={() => {
+                    setReveal({
+                      hintNo: 6,
+                      revealed: false,
+                    });
+                  }}
+                >
+                  Get Hint
+                </button>
+              )}
             </div>
             <div className="flex w-full max-w-sm flex-row justify-center space-x-2">
               <div className="flex items-center">
@@ -297,12 +472,47 @@ export default function Round1() {
           <div className="flex flex-col items-center gap-2">
             <div className="flex items-center gap-3">
               <h2 className="text-center font-semibold">Puzzle 6</h2>
-              <button
-                type="button"
-                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
-              >
-                Get Hint
-              </button>
+              {reveal?.hintNo === 7 ? (
+                <div className="w-full max-w-sm rounded-xl border p-2">
+                  Hint No. {reveal.hintNo}
+                  <p
+                    className={`${
+                      reveal.revealed ? "" : "blur-sm"
+                    } transition duration-1000`}
+                  >
+                    {reveal.revealed
+                      ? q.isLoading
+                        ? "loading..."
+                        : q.data
+                      : "You really thought you could get it just like that?"}
+                  </p>
+                  <button
+                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
+                    type="button"
+                    onClick={() => {
+                      !reveal.revealed && q.mutate({ hintNo: 7 });
+                      reveal.revealed
+                        ? setReveal({ hintNo: null, revealed: false })
+                        : setReveal({ hintNo: 7, revealed: true });
+                    }}
+                  >
+                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                  onClick={() => {
+                    setReveal({
+                      hintNo: 7,
+                      revealed: false,
+                    });
+                  }}
+                >
+                  Get Hint
+                </button>
+              )}
             </div>
             <div className="flex w-full flex-row items-center space-x-2">
               <input
