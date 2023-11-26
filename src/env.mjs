@@ -57,22 +57,22 @@ export const env = createEnv({
     ETHEREAL_EMAIL: z.string(),
     ETHEREAL_PASSWORD: z.string(),
     HINT_R1: z.object({
-      1: z.string(),
-      2: z.string(),
-      3: z.string(),
-      4: z.string(),
-      5: z.string(),
-      6: z.string(),
-      7: z.string(),
+      "1": z.string(),
+      "2": z.string(),
+      "3": z.string(),
+      "4": z.string(),
+      "5": z.string(),
+      "6": z.string(),
+      "7": z.string(),
     }),
     HINT_R2: z.object({
-      1: z.string(),
-      2: z.string(),
-      3: z.string(),
-      4: z.string(),
-      5: z.string(),
-      6: z.string(),
-      7: z.string(),
+      "1": z.string(),
+      "2": z.string(),
+      "3": z.string(),
+      "4": z.string(),
+      "5": z.string(),
+      "6": z.string(),
+      "7": z.string(),
     }),
   },
 
@@ -107,7 +107,9 @@ export const env = createEnv({
     ROUND1_ANSWERS: process.env.ROUND1_ANSWERS
       ? JSON.parse(process.env.ROUND1_ANSWERS)
       : {},
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     HINT_R1: process.env.HINT_R1 ? JSON.parse(process.env.HINT_R1) : {},
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     HINT_R2: process.env.HINT_R2 ? JSON.parse(process.env.HINT_R2) : {},
     ETHEREAL_EMAIL: process.env.ETHEREAL_EMAIL,
     ETHEREAL_PASSWORD: process.env.ETHEREAL_PASSWORD,

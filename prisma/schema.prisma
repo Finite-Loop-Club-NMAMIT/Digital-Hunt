@@ -59,7 +59,7 @@ model User {
     roundOne      RoundOne?
     roundTwo      RoundTwo?
 	zipFile		  FileAssigned? 
-    ROneHints     Json?
+    ROneHints     Json? 
     RTwoHints     Json?
 }
 

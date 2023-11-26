@@ -2,7 +2,6 @@ import React, { useState, type ChangeEvent } from "react";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { env } from "~/env.mjs";
 
 interface Round1Content {
   hiddenRoute: string;
@@ -22,6 +21,7 @@ export default function Round1() {
     hintNo: number | null;
     revealed: boolean;
   }>();
+  const q = api.round1.getHint.useMutation();
   const [de, setDe] = useState<string>("");
   const [form, setForm] = useState<Round1Content>({
     hiddenRoute: "",
@@ -57,7 +57,7 @@ export default function Round1() {
       onSuccess: () => {
         alert("Form submitted successfully");
       },
-      onError: (err) => {
+      onError: () => {
         alert("Error submitting form");
       },
     });
@@ -71,6 +71,7 @@ export default function Round1() {
   if (status === "loading") {
     return <></>;
   }
+
   return (
     <>
       <div className="mx-3 mt-3 flex flex-col p-10">
@@ -85,8 +86,8 @@ export default function Round1() {
               a negative 10 points.
             </li>
             <li>
-              If you've already revealed a hint, it won't cost you when you
-              reveal it again.
+              If you&apos;ve already revealed a hint, it won&apos;t cost you
+              when you reveal it again.
             </li>
           </ol>
         </div>
@@ -115,13 +116,16 @@ export default function Round1() {
                     } transition duration-1000`}
                   >
                     {reveal.revealed
-                      ? "Env"
+                      ? q.isLoading
+                        ? "loading..."
+                        : q.data
                       : "You really thought you could get it just like that?"}
                   </p>
                   <button
                     className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
                     type="button"
                     onClick={() => {
+                      !reveal.revealed && q.mutate({ hintNo: 1 });
                       reveal.revealed
                         ? setReveal({ hintNo: null, revealed: false })
                         : setReveal({ hintNo: 1, revealed: true });
@@ -252,7 +256,7 @@ export default function Round1() {
                   id="radio1"
                   type="radio"
                   defaultChecked
-                  onChange={(e) =>
+                  onChange={() =>
                     setForm((p) => {
                       return { ...p, captchaSolved: true };
                     })
@@ -273,7 +277,7 @@ export default function Round1() {
                   id="radio2"
                   type="radio"
                   value="false"
-                  onChange={(e) =>
+                  onChange={() =>
                     setForm((p) => {
                       return { ...p, captchaSolved: false };
                     })
