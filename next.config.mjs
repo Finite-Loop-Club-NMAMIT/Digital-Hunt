@@ -18,7 +18,7 @@ const config = {
     defaultLocale: "en",
   },
   images:{
-    domains:["localhost:3000","intsgram.tech"]
+    domains:["localhost:3000","intsagram.tech"]
   }
 };
 

@@ -1,6 +1,4 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -52,15 +50,15 @@ export default function Round2() {
   }
   return (
     <>
-      <div className="mx-3 mt-3 flex flex-col">
-        <h1 className="mb-4 text-center text-2xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-3xl lg:text-4xl">
-          Round 2
+      <div className="mx-3 mt-3 flex flex-col p-10">
+        <h1 className="mb-5 text-center text-2xl font-extrabold leading-none tracking-tight text-blue-600 md:text-3xl lg:text-4xl">
+          Round 2 Submission Form
         </h1>
-        <form onSubmit={submit}>
+        <form onSubmit={submit} className="flex flex-col gap-5">
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 1</h2>
+            <h2 className="text-center font-semibold">Puzzle 1</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.firstWord}
                 onChange={(e) =>
@@ -69,15 +67,14 @@ export default function Round2() {
                   })
                 }
                 placeholder="First word"
-                className="pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
-          </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+          </div>{" "}
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 2</h2>
+            <h2 className="text-center font-semibold">Puzzle 2</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.secondWord}
                 onChange={(e) =>
@@ -86,15 +83,14 @@ export default function Round2() {
                   })
                 }
                 placeholder="Second word"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
-          </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+          </div>{" "}
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 3</h2>
+            <h2 className="text-center font-semibold">Puzzle 3</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.thirdWord}
                 onChange={(e) =>
@@ -103,15 +99,14 @@ export default function Round2() {
                   })
                 }
                 placeholder="Third word"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
-          </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+          </div>{" "}
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 4</h2>
+            <h2 className="text-center font-semibold">Puzzle 4</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.hexahue}
                 onChange={(e) =>
@@ -120,15 +115,14 @@ export default function Round2() {
                   })
                 }
                 placeholder="** ** ** ** ** ** ** ** ** ** **"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
-          </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+          </div>{" "}
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 5</h2>
+            <h2 className="text-center font-semibold">Puzzle 5</h2>
             <div className="flex w-full flex-row items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.latitude}
                 onChange={(e) =>
@@ -137,9 +131,9 @@ export default function Round2() {
                   })
                 }
                 placeholder="Latitude"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
-              <Input
+              <input
                 type="text"
                 value={form.longitude}
                 onChange={(e) =>
@@ -148,15 +142,14 @@ export default function Round2() {
                   })
                 }
                 placeholder="Longitude"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
-          </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+          </div>{" "}
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 6</h2>
+            <h2 className="text-center font-semibold">Puzzle 6</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.asciiResult}
                 onChange={(e) =>
@@ -165,15 +158,14 @@ export default function Round2() {
                   })
                 }
                 placeholder="Passcode"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
-          </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
+          </div>{" "}
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 7</h2>
+            <h2 className="text-center font-semibold">Puzzle 7</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.badge}
                 onChange={(e) =>
@@ -182,14 +174,17 @@ export default function Round2() {
                   })
                 }
                 placeholder="Badge"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
           </div>
-          <div className="mt-2 flex justify-center">
-            <Button type="submit" className="bg-[#10b981] text-white">
+          <div className="mt-5 flex justify-center">
+            <button
+              type="submit"
+              className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+            >
               Submit
-            </Button>
+            </button>
           </div>
         </form>
       </div>

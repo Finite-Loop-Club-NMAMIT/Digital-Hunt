@@ -1,6 +1,4 @@
 import React, { useState, type ChangeEvent } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -32,7 +30,7 @@ export default function Round1() {
     hackerPin: "",
     directEntry: "",
   });
-  const addForm=api.round1.submitForm.useMutation()
+  const addForm = api.round1.submitForm.useMutation();
   const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     const { value } = e.target;
 
@@ -50,14 +48,14 @@ export default function Round1() {
   };
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    addForm.mutate(form,{
-        onSuccess:()=>{
-            alert("Form submitted successfully")
-        },
-        onError:(err)=>{
-            alert("Error submitting form")
-        }
-    })
+    addForm.mutate(form, {
+      onSuccess: () => {
+        alert("Form submitted successfully");
+      },
+      onError: (err) => {
+        alert("Error submitting form");
+      },
+    });
   }
   const { status: status } = useSession();
   const router = useRouter();
@@ -70,16 +68,16 @@ export default function Round1() {
   }
   return (
     <>
-      <div className="mx-3 mt-3 flex flex-col">
-        <h1 className="mb-4 text-center text-2xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-3xl lg:text-4xl">
-          Round 1
+      <div className="mx-3 mt-3 flex flex-col p-10">
+        <h1 className="mb-5 text-center text-2xl font-extrabold leading-none tracking-tight text-blue-600 md:text-3xl lg:text-4xl">
+          Round 1 Submission Form
         </h1>
 
-        <form onSubmit={submit}>
+        <form onSubmit={submit} className="flex flex-col gap-5">
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 1</h2>
+            <h2 className="text-center font-semibold">Puzzle 1</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 value={form.hiddenRoute}
                 onChange={(e) =>
                   setForm((p) => {
@@ -88,15 +86,14 @@ export default function Round1() {
                 }
                 type="text"
                 placeholder="Hidden route"
-                className="pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
           </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 2</h2>
+            <h2 className="text-center font-semibold">Puzzle 2</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.loginRoute}
                 onChange={(e) =>
@@ -105,15 +102,14 @@ export default function Round1() {
                   })
                 }
                 placeholder="Login route"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
           </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 3</h2>
+            <h2 className="text-center font-semibold">Puzzle 3</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.shifts}
                 onChange={(e) =>
@@ -122,15 +118,14 @@ export default function Round1() {
                   })
                 }
                 placeholder="Ceaser cipher key"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
           </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 4</h2>
+            <h2 className="text-center font-semibold">Puzzle 4</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.playfairKey}
                 onChange={(e) =>
@@ -139,15 +134,14 @@ export default function Round1() {
                   })
                 }
                 placeholder="Playfair cipher key"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
           </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 5</h2>
+            <h2 className="text-center font-semibold">Puzzle 5</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.passcode}
                 onChange={(e) =>
@@ -156,13 +150,14 @@ export default function Round1() {
                   })
                 }
                 placeholder="Admin password"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
           </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Did you solve the captcha?</h2>
+            <h2 className="text-center font-semibold">
+              Did you solve the captcha?
+            </h2>
             <div className="flex w-full max-w-sm flex-row justify-center space-x-2">
               <div className="flex items-center">
                 <input
@@ -207,11 +202,10 @@ export default function Round1() {
               </div>
             </div>
           </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">Puzzle 6</h2>
+            <h2 className="text-center font-semibold">Puzzle 6</h2>
             <div className="flex w-full flex-row items-center space-x-2">
-              <Input
+              <input
                 type="text"
                 value={form.hackerName}
                 onChange={(e) =>
@@ -220,9 +214,9 @@ export default function Round1() {
                   })
                 }
                 placeholder="Hacker name"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
-              <Input
+              <input
                 type="text"
                 value={form.hackerLocation}
                 onChange={(e) =>
@@ -231,9 +225,9 @@ export default function Round1() {
                   })
                 }
                 placeholder="Hacker location"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
-              <Input
+              <input
                 type="text"
                 value={form.hackerPin}
                 onChange={(e) =>
@@ -242,13 +236,12 @@ export default function Round1() {
                   })
                 }
                 placeholder="Hacker pin"
-                className=" pl-2"
+                className="w-full rounded-full border border-gray-300 p-2"
               />
             </div>
           </div>
-          <hr className="my-2 h-px border-0 bg-gray-200 dark:bg-gray-700" />
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center">DE</h2>
+            <h2 className="text-center font-semibold">DE</h2>
             <div className="flex w-full flex-row items-center justify-center space-x-2">
               {Array.from({ length: 16 }, (_, index) => (
                 <input
@@ -263,10 +256,13 @@ export default function Round1() {
               ))}
             </div>
           </div>
-          <div className="mt-2 flex justify-center">
-            <Button type="submit" className="bg-[#10b981] text-white">
+          <div className="mt-5 flex justify-center">
+            <button
+              type="submit"
+              className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+            >
               Submit
-            </Button>
+            </button>
           </div>
         </form>
       </div>
