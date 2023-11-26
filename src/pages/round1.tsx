@@ -2,6 +2,7 @@ import React, { useState, type ChangeEvent } from "react";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { env } from "~/env.mjs";
 
 interface Round1Content {
   hiddenRoute: string;
@@ -17,6 +18,10 @@ interface Round1Content {
 }
 
 export default function Round1() {
+  const [reveal, setReveal] = useState<{
+    hintNo: number | null;
+    revealed: boolean;
+  }>();
   const [de, setDe] = useState<string>("");
   const [form, setForm] = useState<Round1Content>({
     hiddenRoute: "",
@@ -72,8 +77,21 @@ export default function Round1() {
         <h1 className="mb-5 text-center text-2xl font-extrabold leading-none tracking-tight text-blue-600 md:text-3xl lg:text-4xl">
           Round 1 Submission Form
         </h1>
+        <div className="flex justify-center">
+          <ol className="list-decimal">
+            <li>You can submit any number of times.</li>
+            <li>
+              Hints can be taken for each puzzle but each hint reveal will cost
+              a negative 10 points.
+            </li>
+            <li>
+              If you've already revealed a hint, it won't cost you when you
+              reveal it again.
+            </li>
+          </ol>
+        </div>
 
-        <form onSubmit={submit} className="flex flex-col gap-5">
+        <form onSubmit={submit} className="mt-5 flex flex-col gap-5">
           <div className="flex flex-col items-center gap-2">
             <h2 className="text-center font-semibold">Puzzle 1</h2>
             <div className="flex w-full max-w-sm items-center space-x-2">
@@ -88,6 +106,44 @@ export default function Round1() {
                 placeholder="Hidden route"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
+              {reveal?.hintNo === 1 ? (
+                <div className="w-full max-w-sm rounded-xl border p-2">
+                  Hint No. 1
+                  <p
+                    className={`${
+                      reveal.revealed ? "" : "blur-sm"
+                    } transition duration-1000`}
+                  >
+                    {reveal.revealed
+                      ? "Env"
+                      : "You really thought you could get it just like that?"}
+                  </p>
+                  <button
+                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
+                    type="button"
+                    onClick={() => {
+                      reveal.revealed
+                        ? setReveal({ hintNo: null, revealed: false })
+                        : setReveal({ hintNo: 1, revealed: true });
+                    }}
+                  >
+                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                  onClick={() => {
+                    setReveal({
+                      hintNo: 1,
+                      revealed: false,
+                    });
+                  }}
+                >
+                  Get Hint
+                </button>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -104,6 +160,12 @@ export default function Round1() {
                 placeholder="Login route"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+              >
+                Get Hint
+              </button>
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -120,6 +182,12 @@ export default function Round1() {
                 placeholder="Ceaser cipher key"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+              >
+                Get Hint
+              </button>
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -136,6 +204,12 @@ export default function Round1() {
                 placeholder="Playfair cipher key"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+              >
+                Get Hint
+              </button>
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -152,12 +226,26 @@ export default function Round1() {
                 placeholder="Admin password"
                 className="w-full rounded-full border border-gray-300 p-2"
               />
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+              >
+                Get Hint
+              </button>
             </div>
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center font-semibold">
-              Did you solve the captcha?
-            </h2>
+          <div className="my-5 flex flex-col items-center gap-2">
+            <div className="flex items-center gap-3">
+              <h2 className="text-center font-semibold">
+                Did you solve the captcha?
+              </h2>
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+              >
+                Get Hint
+              </button>
+            </div>
             <div className="flex w-full max-w-sm flex-row justify-center space-x-2">
               <div className="flex items-center">
                 <input
@@ -203,7 +291,15 @@ export default function Round1() {
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <h2 className="text-center font-semibold">Puzzle 6</h2>
+            <div className="flex items-center gap-3">
+              <h2 className="text-center font-semibold">Puzzle 6</h2>
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+              >
+                Get Hint
+              </button>
+            </div>
             <div className="flex w-full flex-row items-center space-x-2">
               <input
                 type="text"
@@ -240,6 +336,7 @@ export default function Round1() {
               />
             </div>
           </div>
+          <hr className="mt-5" />
           <div className="flex flex-col items-center gap-2">
             <h2 className="text-center font-semibold">DE</h2>
             <div className="flex w-full flex-row items-center justify-center space-x-2">
