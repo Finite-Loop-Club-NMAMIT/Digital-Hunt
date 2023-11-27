@@ -3,17 +3,6 @@ import { createTRPCRouter, protectedProcedure } from "../trpc";
 export const leaderboardRouter = createTRPCRouter({
   getSubmissions: protectedProcedure.query(async ({ ctx }) => {
     try {
-      const userId = ctx.session.user.id;
-      const user = await ctx.db.user.findUnique({
-        where: {
-          id: userId,
-        },
-      });
-      if (user?.role !== "ORGANIZER")
-        throw {
-          type: "Not permitted",
-          message: "Oops! you cannot access this resource",
-        };
       const data = await ctx.db.user.findMany({
         where: {
           role: "PARTICIPANT",
