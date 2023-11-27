@@ -49,9 +49,9 @@ export default function Round2() {
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addForm.mutate(form, {
-      onSuccess: ({points,maxPoints,correct}) => {
+      onSuccess: ({points,previousPoints,correct}) => {
         setCorrect(correct);
-        alert("Your submission points: "+points+"/"+"140"+"\n"+"Max points: "+maxPoints+"/"+"140");
+        alert("Your submission points: "+points+"/"+"140"+"\n"+"Previous Max points: "+previousPoints+"/"+"140");
       },
       onError: () => {
         alert("Error submitting form");

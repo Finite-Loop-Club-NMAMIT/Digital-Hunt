@@ -115,7 +115,7 @@ export const round2Router = createTRPCRouter({
                     });
             }
 
-            return {points, maxPoints:user.points2, correct};
+            return {points, previousPoints:user.points2, correct};
         }),
 
     getHint: protectedProcedure

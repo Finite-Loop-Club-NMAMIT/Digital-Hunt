@@ -69,8 +69,13 @@ export default function Round1() {
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addForm.mutate(form, {
-      onSuccess: ({ points, maxPoints, correct }) => {
-        alert("Your submission points: "+points+"/"+"140"+"\n"+"Max points: "+maxPoints+"/"+"140");
+      onSuccess: ({ points, previousPoints, correct }) => {
+        if(points===140){
+            alert("Congratulations! You have completed the round with full points! \n"+"Your submission points: "+points+"/"+"140"+"\n"+"Previous Max points: "+previousPoints+"/"+"140");   
+            router.push("/ZCisJ1BDKAaXtmJC", undefined).catch((e) => console.log(e));
+        }
+        else
+        alert("Your submission points: "+points+"/"+"140"+"\n"+"Max points: "+previousPoints+"/"+"140");
         setCorrect(() => correct);
       },
       onError: () => {

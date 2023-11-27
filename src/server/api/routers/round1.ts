@@ -97,7 +97,7 @@ export const round1Router = createTRPCRouter({
             throw new Error("Error creating round 1 entry");
           });
       }
-      return {points,maxPoints:user.points1,correct};
+      return {points,previousPoints:user.points1,correct};
     }),
 
   getHint: protectedProcedure

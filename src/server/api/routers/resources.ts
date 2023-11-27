@@ -4,6 +4,17 @@ import z from "zod";
 export const files = createTRPCRouter({
 	getFile: protectedProcedure.query(async ({ ctx }) => {
 		try {
+            const user = await ctx.db.user.findFirst({
+                where: { id: ctx.session.user.id },
+              });
+        
+            if (!user) {
+                throw new Error("User not found");
+            }
+
+            if(user.points1<140){
+                throw new Error("You have not completed Round 1 yet")
+            }
 			const { fileNumber, hash } = getFileNumber(
 				z.string().parse(ctx.session.user.name)
 			);
@@ -47,7 +58,7 @@ export const files = createTRPCRouter({
 			return downloadLink;
 		} catch (e) {
 			console.log(e);
-			throw "An error occurred!";
+            return {error:e as Error}
 		}
 	}),
 });
