@@ -1,7 +1,7 @@
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const leaderboardRouter = createTRPCRouter({
-  getSubmissions: protectedProcedure.query(async ({ ctx }) => {
+  getSubmissions: publicProcedure.query(async ({ ctx }) => {
     try {
       const data = await ctx.db.user.findMany({
         where: {
