@@ -2,6 +2,7 @@ import { type FunctionComponent } from "react";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import ImageSlider from "../imageslider";
 
 const SignPage: FunctionComponent = () => {
     return (
@@ -52,27 +53,7 @@ const SignPage: FunctionComponent = () => {
                 </div>
                 <div className="mt-4 flex flex-col items-center gap-5 text-center mb-4 px-2">
                     <h1 className="text-2xl font-semibold text-green-300 px-2">Round 1 Storyline</h1>
-                    <Link className="text-white text-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br ring-green-900 ring-4 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-800/80 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2"
-                        href={"/leaderboard"} rel="noopener noreferrer" target="_blank" onClick={() => {console.log("leaderboard")}}>
-                        View Leaderboard 🏆
-                    </Link>
-
-                    <div className="text-white bg-gradient-to-tl backdrop-blur-md w-full md:w-3/4 border border-sky-300 rounded-lg p-4">
-                        <h2 className="text-lg md:text-xl font-semibold text-green-400 mb-2">Instructions to play</h2>
-                        {/* <h2 className="font-semibold text-lg md:text-xl text-yellow-400 mb-2">Generative AI workshop</h2> */}
-                        <ol className="list-disc list-inside mt-4text-gray-200 text-justify">
-                            <li>You need to sign in with a google account to start playing.</li>
-                            <li>There&apos;s no guide to help you on `what needs to be done next?`, that&apos;s what you have to figure out in this game.</li>
-                            <li>Advised to be played on a Desktop/Laptop computers, and not on Smartphones.</li>
-                            <li>Consists of total two rounds.</li>
-                            <li>You can submit the form any number of times, so keep filling the answers as you solve the puzzles.</li>
-                            <li>Each puzzle you solve fetches you a +20 and each hint you take will take -10 from you.</li>
-                            <li>Public leaderboard is available {' '}
-                                <a href="https://intsagram.tech/leaderboard" rel="noopener noreferrer" target="_blank" className="text-sky-600 hover:underline underline-offset-1">[here]</a>
-                            </li>
-                            <li>Now, go ahead and find Obama&apos;s hacker</li>
-                        </ol>
-                    </div>
+                    <ImageSlider/>
                 </div>
                 {/* Champions Corner: Dive into the Leaderboard */}
                     {/* <button className="bg-black rounded-lg shadow-lg text-white px-4 py-2"

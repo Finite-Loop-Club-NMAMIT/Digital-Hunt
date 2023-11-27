@@ -12,18 +12,18 @@ interface BlurImageProps {
 }
 
 const BlurImage: FunctionComponent<BlurImageProps> = (props) => {
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   return (
     <Image
       {...props}
       alt={props.alt}
-      className={`${props.className as string} duration-700 ease-in-out ${
-        isLoading
+      className={`${props.className!} duration-700 ease-in-out ${
+        !isLoading
           ? "scale-110 blur-lg grayscale"
           : "scale-100 blur-0 grayscale-0"
       }`}
-      onLoadingComplete={() => setLoading(false)}
+      onLoad={() => setLoading(true)}
     />
   );
 };

@@ -25,6 +25,7 @@
     "react": "18.2.0",
     "react-cookie": "^6.1.1",
     "react-dom": "18.2.0",
+    "react-easy-swipe": "^0.0.23",
     "react-google-recaptcha": "^3.1.0",
     "react-icons": "^4.12.0",
     "superjson": "^2.2.1",
