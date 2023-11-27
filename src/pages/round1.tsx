@@ -70,7 +70,7 @@ export default function Round1() {
     e.preventDefault();
     addForm.mutate(form, {
       onSuccess: ({ points, maxPoints, correct }) => {
-        alert("Form submitted successfully");
+        alert("Your submission points: "+points+"/"+"140"+"\n"+"Max points: "+maxPoints+"/"+"140");
         setCorrect(() => correct);
       },
       onError: () => {
@@ -137,7 +137,8 @@ export default function Round1() {
                   <RxCross2 className="h-6 w-6 text-red-500" />
                 )
               ) : (
-                <></>)}
+                <></>
+              )}
               {reveal?.hintNo === 1 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -209,7 +210,8 @@ export default function Round1() {
                   <RxCross2 className="h-6 w-6 text-red-500" />
                 )
               ) : (
-                <></>)}
+                <></>
+              )}
               {reveal?.hintNo === 2 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -266,13 +268,13 @@ export default function Round1() {
                 }
                 placeholder="Ceaser cipher key"
                 className={
-                    "w-full rounded-full border border-gray-300 p-2 " +
-                    (correct
-                      ? correct.shifts
-                        ? "border-2 border-green-500"
-                        : "border-2 border-red-500"
-                      : "")
-                  }
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.shifts
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
               {correct ? (
                 correct?.shifts ? (
@@ -281,7 +283,8 @@ export default function Round1() {
                   <RxCross2 className="h-6 w-6 text-red-500" />
                 )
               ) : (
-                <></>)}
+                <></>
+              )}
               {reveal?.hintNo === 3 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -338,13 +341,13 @@ export default function Round1() {
                 }
                 placeholder="Playfair cipher key"
                 className={
-                    "w-full rounded-full border border-gray-300 p-2 " +
-                    (correct
-                      ? correct.playfairKey
-                        ? "border-2 border-green-500"
-                        : "border-2 border-red-500"
-                      : "")
-                  }
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.playfairKey
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
               {correct ? (
                 correct?.playfairKey ? (
@@ -353,7 +356,8 @@ export default function Round1() {
                   <RxCross2 className="h-6 w-6 text-red-500" />
                 )
               ) : (
-                <></>)}
+                <></>
+              )}
               {reveal?.hintNo === 4 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -410,13 +414,13 @@ export default function Round1() {
                 }
                 placeholder="Admin password"
                 className={
-                    "w-full rounded-full border border-gray-300 p-2 " +
-                    (correct
-                      ? correct.passcode
-                        ? "border-2 border-green-500"
-                        : "border-2 border-red-500"
-                      : "")
-                  }
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.passcode
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
               {correct !== undefined ? (
                 correct?.passcode ? (
@@ -425,7 +429,8 @@ export default function Round1() {
                   <RxCross2 className="h-6 w-6 text-red-500" />
                 )
               ) : (
-                <></>)}
+                <></>
+              )}
               {reveal?.hintNo === 5 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -563,58 +568,58 @@ export default function Round1() {
           <div className="flex flex-col items-center gap-3">
             <h2 className="text-center font-semibold">Puzzle 6</h2>
             {reveal?.hintNo === 7 ? (
-                <div className="w-full max-w-sm rounded-xl border p-2">
-                  Hint No. {reveal.hintNo}
-                  <p
-                    className={`${
-                      reveal.revealed ? "" : "blur-sm"
-                    } transition duration-1000`}
-                  >
-                    {reveal.revealed
-                      ? q.isLoading
-                        ? "loading..."
-                        : q.data
-                      : "You really thought you could get it just like that?"}
-                  </p>
-                  <button
-                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
-                    type="button"
-                    onClick={() => {
-                      !reveal.revealed && q.mutate({ hintNo: 7 });
-                      reveal.revealed
-                        ? setReveal({ hintNo: null, revealed: false })
-                        : setReveal({ hintNo: 7, revealed: true });
-                    }}
-                  >
-                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
-                  </button>
-                </div>
-              ) : (
+              <div className="w-full max-w-sm rounded-xl border p-2">
+                Hint No. {reveal.hintNo}
+                <p
+                  className={`${
+                    reveal.revealed ? "" : "blur-sm"
+                  } transition duration-1000`}
+                >
+                  {reveal.revealed
+                    ? q.isLoading
+                      ? "loading..."
+                      : q.data
+                    : "You really thought you could get it just like that?"}
+                </p>
                 <button
+                  className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
                   type="button"
-                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
                   onClick={() => {
-                    setReveal({
-                      hintNo: 7,
-                      revealed: false,
-                    });
+                    !reveal.revealed && q.mutate({ hintNo: 7 });
+                    reveal.revealed
+                      ? setReveal({ hintNo: null, revealed: false })
+                      : setReveal({ hintNo: 7, revealed: true });
                   }}
                 >
-                  Get Hint
+                  {reveal.revealed ? "Close Hint" : "Reveal Hint"}
                 </button>
-              )}
-            <div className="flex w-full flex-row flex-wrap justify-center items-center gap-2">
-            <div className="flex justify-center items-center flex-1 max-w-sm">
-              <input
-                type="text"
-                value={form.hackerName}
-                onChange={(e) =>
-                  setForm((p) => {
-                    return { ...p, hackerName: e.target.value };
-                  })
-                }
-                placeholder="Hacker name"
-                className={
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                onClick={() => {
+                  setReveal({
+                    hintNo: 7,
+                    revealed: false,
+                  });
+                }}
+              >
+                Get Hint
+              </button>
+            )}
+            <div className="flex w-full flex-row flex-wrap items-center justify-center gap-2">
+              <div className="flex max-w-sm flex-1 items-center justify-center">
+                <input
+                  type="text"
+                  value={form.hackerName}
+                  onChange={(e) =>
+                    setForm((p) => {
+                      return { ...p, hackerName: e.target.value };
+                    })
+                  }
+                  placeholder="Hacker name"
+                  className={
                     "flex-1 rounded-full border border-gray-300 p-2 " +
                     (correct
                       ? correct.hackerName
@@ -622,28 +627,28 @@ export default function Round1() {
                         : "border-2 border-red-500"
                       : "")
                   }
-              />
-              {correct ? (
-                correct?.hackerName ? (
-                  <TiTick className="h-6 w-6 text-green-500" />
+                />
+                {correct ? (
+                  correct?.hackerName ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                  ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                  )
                 ) : (
-                  <RxCross2 className="h-6 w-6 text-red-500" />
-                )
-              ) : (
-                <></>
-              )}
+                  <></>
+                )}
               </div>
-              <div className="flex justify-center items-center flex-1 max-w-sm">
-              <input
-                type="text"
-                value={form.hackerLocation}
-                onChange={(e) =>
-                  setForm((p) => {
-                    return { ...p, hackerLocation: e.target.value };
-                  })
-                }
-                placeholder="Hacker location"
-                className={
+              <div className="flex max-w-sm flex-1 items-center justify-center">
+                <input
+                  type="text"
+                  value={form.hackerLocation}
+                  onChange={(e) =>
+                    setForm((p) => {
+                      return { ...p, hackerLocation: e.target.value };
+                    })
+                  }
+                  placeholder="Hacker location"
+                  className={
                     "flex-1 rounded-full border border-gray-300 p-2 " +
                     (correct
                       ? correct.hackerLocation
@@ -651,28 +656,28 @@ export default function Round1() {
                         : "border-2 border-red-500"
                       : "")
                   }
-              />
-              {correct ? (
-                correct?.hackerLocation ? (
-                  <TiTick className="h-6 w-6 text-green-500" />
+                />
+                {correct ? (
+                  correct?.hackerLocation ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                  ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                  )
                 ) : (
-                  <RxCross2 className="h-6 w-6 text-red-500" />
-                )
-              ) : (
-                <></>
-              )}
+                  <></>
+                )}
               </div>
-              <div className="flex justify-center items-center flex-1 max-w-sm">
+              <div className="flex max-w-sm flex-1 items-center justify-center">
                 <input
-                type="text"
-                value={form.hackerPin}
-                onChange={(e) =>
-                  setForm((p) => {
-                    return { ...p, hackerPin: e.target.value };
-                  })
-                }
-                placeholder="Hacker pin"
-                className={
+                  type="text"
+                  value={form.hackerPin}
+                  onChange={(e) =>
+                    setForm((p) => {
+                      return { ...p, hackerPin: e.target.value };
+                    })
+                  }
+                  placeholder="Hacker pin"
+                  className={
                     "flex-1 rounded-full border border-gray-300 p-2 " +
                     (correct
                       ? correct.hackerPin
@@ -680,16 +685,16 @@ export default function Round1() {
                         : "border-2 border-red-500"
                       : "")
                   }
-              />
-              {correct ? (
-                correct?.hackerPin ? (
-                  <TiTick className="h-6 w-6 text-green-500" />
+                />
+                {correct ? (
+                  correct?.hackerPin ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                  ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                  )
                 ) : (
-                  <RxCross2 className="h-6 w-6 text-red-500" />
-                )
-              ) : (
-                <></>
-              )}
+                  <></>
+                )}
               </div>
             </div>
           </div>
@@ -701,13 +706,14 @@ export default function Round1() {
                 <input
                   id={`de-input-${index}`}
                   key={index}
-                  className={"h-8 w-8 border border-gray-300 text-center text-xl "+
-                        (correct
-                            ? correct.directEntry
-                            ? "border-2 border-green-500"
-                            : "border-2 border-red-500"
-                            : "")
-                        }
+                  className={
+                    "h-8 w-8 border border-gray-300 text-center text-xl " +
+                    (correct
+                      ? correct.directEntry
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
                   type="text"
                   maxLength={1}
                   value={de[index] ?? ""}

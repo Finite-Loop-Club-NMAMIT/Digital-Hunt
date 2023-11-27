@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { TiTick } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
 
 interface Round2Content {
   firstWord: string;
@@ -12,6 +14,17 @@ interface Round2Content {
   longitude: string;
   asciiResult: string;
   badge: string;
+}
+
+interface Round2Correct {
+    firstWord?: boolean;
+    secondWord?: boolean;
+    thirdWord?: boolean;
+    hexahue?: boolean;
+    latitude?: boolean;
+    longitude?: boolean;
+    asciiResult?: boolean;
+    badge?: boolean;
 }
 
 export default function Round2() {
@@ -31,12 +44,14 @@ export default function Round2() {
     badge: "",
   });
   const addForm = api.round2.submitForm.useMutation();
+  const [correct, setCorrect] = useState<Round2Correct|undefined>();
 
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addForm.mutate(form, {
-      onSuccess: () => {
-        alert("Form submitted successfully");
+      onSuccess: ({points,maxPoints,correct}) => {
+        setCorrect(correct);
+        alert("Your submission points: "+points+"/"+"140"+"\n"+"Max points: "+maxPoints+"/"+"140");
       },
       onError: () => {
         alert("Error submitting form");
@@ -85,8 +100,23 @@ export default function Round2() {
                   })
                 }
                 placeholder="First word"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.firstWord
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.firstWord ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 1 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -142,8 +172,23 @@ export default function Round2() {
                   })
                 }
                 placeholder="Second word"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.firstWord
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.secondWord ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 2 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -199,8 +244,23 @@ export default function Round2() {
                   })
                 }
                 placeholder="Third word"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.thirdWord
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+                {correct ? (
+                    correct?.thirdWord ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                    ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                    )
+                ) : (
+                    <></>
+                )}
               {reveal?.hintNo === 3 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -256,8 +316,23 @@ export default function Round2() {
                   })
                 }
                 placeholder="** ** ** ** ** ** ** ** ** ** **"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.hexahue
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+                {correct ? (
+                    correct?.hexahue ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                    ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                    )
+                ) : (
+                    <></>
+                )}
               {reveal?.hintNo === 4 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -356,7 +431,13 @@ export default function Round2() {
                   })
                 }
                 placeholder="Latitude"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.latitude
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
               <input
                 type="text"
@@ -367,7 +448,13 @@ export default function Round2() {
                   })
                 }
                 placeholder="Longitude"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.longitude
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
             </div>
           </div>{" "}
@@ -383,8 +470,23 @@ export default function Round2() {
                   })
                 }
                 placeholder="Passcode"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.asciiResult
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.asciiResult ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 6 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -440,8 +542,23 @@ export default function Round2() {
                   })
                 }
                 placeholder="Badge"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={"w-full rounded-full border border-gray-300 p-2 "+
+                (correct
+                    ? correct?.badge
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+                {correct ? (
+                    correct?.badge ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                    ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                    )
+                ) : (
+                    <></>
+                )}
               {reveal?.hintNo === 7 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
