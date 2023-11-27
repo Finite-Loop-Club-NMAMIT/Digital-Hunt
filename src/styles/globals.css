@@ -12,3 +12,92 @@
     /* part:2/4 */
     code:"J1BD"
 }
+/* box-shadow: 0 15px 25px rgba(0, 128, 0, 0.2), 0 10px 10px rgba(0, 128, 0, 0.15); 
+
+/* .shadow-custom {
+  position: relative;
+  box-shadow: 0 15px 25px rgba(0, 255, 0, 0.525), 0 10px 10px rgba(0, 255, 0, 0.421);
+}
+
+.shadow-custom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  background: linear-gradient(rgba(0, 255, 0, 0.373), rgba(0, 255, 0, 0.471));
+  pointer-events: none;
+  z-index: -1;
+} */
+
+.shadow-custom {
+  position: relative;
+  box-shadow: 0 15px 25px rgba(0, 255, 0, 0.525), 0 10px 10px rgba(0, 255, 0, 0.421);
+}
+
+
+.shadow-custom::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Adjusted to be at the bottom */
+  height: 10px; /* Adjusted height of the shadow below the element */
+  background: linear-gradient(rgba(0, 255, 0, 0.373), rgba(0, 255, 0, 0.471));
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+.neonText {
+  line-height: calc(20px + 10vh);
+  text-shadow: 0 0 5px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00cc00, 0 0 10px #00ff00, 0 0 98px #00cc00;
+  color: #b0ffb0; /* Slightly lighter green text color */
+  /* font-family: "Sacramento", cursive; */
+  text-align: center;
+  animation: blink 3s infinite;
+  -webkit-animation: blink 4s infinite;
+}
+
+@-webkit-keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    text-shadow: 0 0 5px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00cc00, 0 0 10px #00ff00, 0 0 98px #00cc00;
+    color: #b0ffb0;
+  }
+}
+
+@keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    text-shadow: 0 0 5px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00cc00, 0 0 10px #00ff00, 0 0 98px #00cc00;
+    color: #b0ffb0;
+  }
+}
