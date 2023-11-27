@@ -15,10 +15,10 @@ Digital Hunt is a fun filled 2-round game, where your digital common sense and b
 - There's no guide to help you on `what needs to be done next?`, that's what you have to figure out in this game.
 - Advised to be played on a Desktop/Laptop computers, and not on Smartphones.
 - Consists of total two rounds.
-- Open the submission form on one tab, and keep playing the game on another.
 - You can submit the form any number of times, so keep filling the answers as you solve the puzzles.
 - Each puzzle you solve fetches you a +20 and each hint you take will take -10 from you.
 - Public leaderboard is available [here](https://intsagram.tech/leaderboard)
+- Now, go ahead and find Obama's hacker
 
 ## Local Setup
 1. Clone the repo
