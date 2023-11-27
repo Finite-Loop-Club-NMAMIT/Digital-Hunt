@@ -59,6 +59,8 @@ model User {
     roundOne      RoundOne?
     roundTwo      RoundTwo?
 	zipFile		  FileAssigned? 
+    ROneHints     Json? 
+    RTwoHints     Json?
 }
 
 model VerificationToken {
