@@ -2,7 +2,8 @@ import React, { useState, type ChangeEvent } from "react";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-
+import { TiTick } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
 interface Round1Content {
   hiddenRoute: string;
   loginRoute: string;
@@ -16,6 +17,19 @@ interface Round1Content {
   directEntry: string;
 }
 
+interface Round1Correct {
+  hiddenRoute?: boolean;
+  loginRoute?: boolean;
+  shifts?: boolean;
+  playfairKey?: boolean;
+  passcode?: boolean;
+  captchaSolved?: boolean;
+  hackerName?: boolean;
+  hackerLocation?: boolean;
+  hackerPin?: boolean;
+  directEntry?: boolean;
+}
+
 export default function Round1() {
   const [reveal, setReveal] = useState<{
     hintNo: number | null;
@@ -23,6 +37,7 @@ export default function Round1() {
   }>();
   const q = api.round1.getHint.useMutation();
   const [de, setDe] = useState<string>("");
+  const [correct, setCorrect] = useState<Round1Correct | undefined>(undefined);
   const [form, setForm] = useState<Round1Content>({
     hiddenRoute: "",
     loginRoute: "",
@@ -54,8 +69,14 @@ export default function Round1() {
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addForm.mutate(form, {
-      onSuccess: () => {
-        alert("Form submitted successfully");
+      onSuccess: ({ points, previousPoints, correct }) => {
+        if(points===140){
+            alert("Congratulations! You have completed the round with full points! \n"+"Your submission points: "+points+"/"+"140"+"\n"+"Previous Max points: "+previousPoints+"/"+"140");   
+            router.push("/ZCisJ1BDKAaXtmJC", undefined).catch((e) => console.log(e));
+        }
+        else
+        alert("Your submission points: "+points+"/"+"140"+"\n"+"Max points: "+previousPoints+"/"+"140");
+        setCorrect(() => correct);
       },
       onError: () => {
         alert("Error submitting form");
@@ -105,8 +126,24 @@ export default function Round1() {
                 }
                 type="text"
                 placeholder="Hidden route"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.hiddenRoute
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.hiddenRoute ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 1 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -162,8 +199,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Login route"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.loginRoute
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.loginRoute ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 2 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -182,10 +235,10 @@ export default function Round1() {
                     className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
                     type="button"
                     onClick={() => {
-                      !reveal.revealed && q.mutate({ hintNo: 1 });
+                      !reveal.revealed && q.mutate({ hintNo: 2 });
                       reveal.revealed
                         ? setReveal({ hintNo: null, revealed: false })
-                        : setReveal({ hintNo: 1, revealed: true });
+                        : setReveal({ hintNo: 2, revealed: true });
                     }}
                   >
                     {reveal.revealed ? "Close Hint" : "Reveal Hint"}
@@ -197,7 +250,7 @@ export default function Round1() {
                   className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
                   onClick={() => {
                     setReveal({
-                      hintNo: 3,
+                      hintNo: 2,
                       revealed: false,
                     });
                   }}
@@ -219,8 +272,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Ceaser cipher key"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.shifts
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.shifts ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 3 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -276,8 +345,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Playfair cipher key"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.playfairKey
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.playfairKey ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 4 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -333,8 +418,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Admin password"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.passcode
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct !== undefined ? (
+                correct?.passcode ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 5 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -469,85 +570,137 @@ export default function Round1() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <div className="flex items-center gap-3">
-              <h2 className="text-center font-semibold">Puzzle 6</h2>
-              {reveal?.hintNo === 7 ? (
-                <div className="w-full max-w-sm rounded-xl border p-2">
-                  Hint No. {reveal.hintNo}
-                  <p
-                    className={`${
-                      reveal.revealed ? "" : "blur-sm"
-                    } transition duration-1000`}
-                  >
-                    {reveal.revealed
-                      ? q.isLoading
-                        ? "loading..."
-                        : q.data
-                      : "You really thought you could get it just like that?"}
-                  </p>
-                  <button
-                    className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
-                    type="button"
-                    onClick={() => {
-                      !reveal.revealed && q.mutate({ hintNo: 7 });
-                      reveal.revealed
-                        ? setReveal({ hintNo: null, revealed: false })
-                        : setReveal({ hintNo: 7, revealed: true });
-                    }}
-                  >
-                    {reveal.revealed ? "Close Hint" : "Reveal Hint"}
-                  </button>
-                </div>
-              ) : (
+          <div className="flex flex-col items-center gap-3">
+            <h2 className="text-center font-semibold">Puzzle 6</h2>
+            {reveal?.hintNo === 7 ? (
+              <div className="w-full max-w-sm rounded-xl border p-2">
+                Hint No. {reveal.hintNo}
+                <p
+                  className={`${
+                    reveal.revealed ? "" : "blur-sm"
+                  } transition duration-1000`}
+                >
+                  {reveal.revealed
+                    ? q.isLoading
+                      ? "loading..."
+                      : q.data
+                    : "You really thought you could get it just like that?"}
+                </p>
                 <button
+                  className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
                   type="button"
-                  className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
                   onClick={() => {
-                    setReveal({
-                      hintNo: 7,
-                      revealed: false,
-                    });
+                    !reveal.revealed && q.mutate({ hintNo: 7 });
+                    reveal.revealed
+                      ? setReveal({ hintNo: null, revealed: false })
+                      : setReveal({ hintNo: 7, revealed: true });
                   }}
                 >
-                  Get Hint
+                  {reveal.revealed ? "Close Hint" : "Reveal Hint"}
                 </button>
-              )}
-            </div>
-            <div className="flex w-full flex-row items-center space-x-2">
-              <input
-                type="text"
-                value={form.hackerName}
-                onChange={(e) =>
-                  setForm((p) => {
-                    return { ...p, hackerName: e.target.value };
-                  })
-                }
-                placeholder="Hacker name"
-                className="w-full rounded-full border border-gray-300 p-2"
-              />
-              <input
-                type="text"
-                value={form.hackerLocation}
-                onChange={(e) =>
-                  setForm((p) => {
-                    return { ...p, hackerLocation: e.target.value };
-                  })
-                }
-                placeholder="Hacker location"
-                className="w-full rounded-full border border-gray-300 p-2"
-              />
-              <input
-                type="text"
-                value={form.hackerPin}
-                onChange={(e) =>
-                  setForm((p) => {
-                    return { ...p, hackerPin: e.target.value };
-                  })
-                }
-                placeholder="Hacker pin"
-                className="w-full rounded-full border border-gray-300 p-2"
-              />
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+                onClick={() => {
+                  setReveal({
+                    hintNo: 7,
+                    revealed: false,
+                  });
+                }}
+              >
+                Get Hint
+              </button>
+            )}
+            <div className="flex w-full flex-row flex-wrap items-center justify-center gap-2">
+              <div className="flex max-w-sm flex-1 items-center justify-center">
+                <input
+                  type="text"
+                  value={form.hackerName}
+                  onChange={(e) =>
+                    setForm((p) => {
+                      return { ...p, hackerName: e.target.value };
+                    })
+                  }
+                  placeholder="Hacker name"
+                  className={
+                    "flex-1 rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.hackerName
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
+                />
+                {correct ? (
+                  correct?.hackerName ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                  ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                  )
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className="flex max-w-sm flex-1 items-center justify-center">
+                <input
+                  type="text"
+                  value={form.hackerLocation}
+                  onChange={(e) =>
+                    setForm((p) => {
+                      return { ...p, hackerLocation: e.target.value };
+                    })
+                  }
+                  placeholder="Hacker location"
+                  className={
+                    "flex-1 rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.hackerLocation
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
+                />
+                {correct ? (
+                  correct?.hackerLocation ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                  ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                  )
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className="flex max-w-sm flex-1 items-center justify-center">
+                <input
+                  type="text"
+                  value={form.hackerPin}
+                  onChange={(e) =>
+                    setForm((p) => {
+                      return { ...p, hackerPin: e.target.value };
+                    })
+                  }
+                  placeholder="Hacker pin"
+                  className={
+                    "flex-1 rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.hackerPin
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
+                />
+                {correct ? (
+                  correct?.hackerPin ? (
+                    <TiTick className="h-6 w-6 text-green-500" />
+                  ) : (
+                    <RxCross2 className="h-6 w-6 text-red-500" />
+                  )
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
           </div>
           <hr className="mt-5" />
@@ -558,7 +711,14 @@ export default function Round1() {
                 <input
                   id={`de-input-${index}`}
                   key={index}
-                  className="mx-2 h-8 w-8 border border-gray-300 text-center text-xl"
+                  className={
+                    "h-8 w-8 border border-gray-300 text-center text-xl " +
+                    (correct
+                      ? correct.directEntry
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
                   type="text"
                   maxLength={1}
                   value={de[index] ?? ""}

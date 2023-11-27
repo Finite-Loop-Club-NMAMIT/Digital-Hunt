@@ -1,28 +1,42 @@
-# Create T3 App
+<p align="center">
+<img src="https://res.cloudinary.com/dpfpk49oa/image/upload/v1661426779/logo1_gyjvor.png" width="501" height="94">
+<h3 align="center">Finite Loop Club Presents</h3>
+</p>
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+<p align="center">
+<img src="https://res.cloudinary.com/dwfiisxz0/image/upload/v1701093109/nnk3aktfqjurkdtfqrvs.jpg" width="800px" alt="Digital Hunt Cover" />
+</p>
 
-## What's next? How do I make an app with this?
+## Digital Hunt
+Digital Hunt is a fun filled 2-round game, where your digital common sense and basic computer tricks are put into test. It's a kind of a CTF type of event, but basic. Digital Hunt is a unique take on the traditional treasure hunt, with a digital twist. The event was designed to be entirely computer-based.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Instructions to Play
+- You need to sign in with a google account to start playing.
+- There's no guide to help you on `what needs to be done next?`, that's what you have to figure out in this game.
+- Advised to be played on a Desktop/Laptop computers, and not on Smartphones.
+- Consists of total two rounds.
+- You can submit the form any number of times, so keep filling the answers as you solve the puzzles.
+- Each puzzle you solve fetches you a +20 and each hint you take will take -10 from you.
+- Public leaderboard is available [here](https://intsagram.tech/leaderboard)
+- Now, go ahead and find Obama's hacker
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Local Setup
+1. Clone the repo
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+   ```sh
+   git clone https://github.com/Finite-Loop-Club-NMAMIT/Digital-Hunt.git
+   ```
 
-## Learn More
+2. Install dependencies
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+   ```sh
+   pnpm i
+   ```
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+3. Create an `.env` file similar to `.env.example` and fill the keys.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+4. Start the development server
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+   ```sh
+   pnpm dev
+   ```
