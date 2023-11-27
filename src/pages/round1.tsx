@@ -182,10 +182,10 @@ export default function Round1() {
                     className="mt-2 rounded-full bg-blue-600 px-2 py-1 text-white hover:bg-blue-500"
                     type="button"
                     onClick={() => {
-                      !reveal.revealed && q.mutate({ hintNo: 1 });
+                      !reveal.revealed && q.mutate({ hintNo: 2 });
                       reveal.revealed
                         ? setReveal({ hintNo: null, revealed: false })
-                        : setReveal({ hintNo: 1, revealed: true });
+                        : setReveal({ hintNo: 2, revealed: true });
                     }}
                   >
                     {reveal.revealed ? "Close Hint" : "Reveal Hint"}
@@ -197,7 +197,7 @@ export default function Round1() {
                   className="w-36 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
                   onClick={() => {
                     setReveal({
-                      hintNo: 3,
+                      hintNo: 2,
                       revealed: false,
                     });
                   }}
