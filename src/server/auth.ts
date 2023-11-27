@@ -45,12 +45,15 @@ export const authOptions: NextAuthOptions = {
         id: user.id,
       },
     }),
-    signIn: async ({ profile }) => {
-        if(profile?.email?.endsWith("@nmamit.in"))
-            return Promise.resolve(true)
-        else    
-            return "/?error=Access Denied"
+    signIn: async () => {
+      return Promise.resolve(true)
     }
+    // signIn: async ({ profile }) => {
+    //     if(profile?.email?.endsWith("@nmamit.in"))
+    //         return Promise.resolve(true)
+    //     else    
+    //         return "/?error=Access Denied"
+    // }
   },
   adapter: PrismaAdapter(db),
   providers: [
