@@ -2,7 +2,8 @@ import React, { useState, type ChangeEvent } from "react";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-
+import { TiTick } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
 interface Round1Content {
   hiddenRoute: string;
   loginRoute: string;
@@ -16,8 +17,22 @@ interface Round1Content {
   directEntry: string;
 }
 
+interface Round1Correct {
+  hiddenRoute?: boolean;
+  loginRoute?: boolean;
+  shifts?: boolean;
+  playfairKey?: boolean;
+  passcode?: boolean;
+  captchaSolved?: boolean;
+  hackerName?: boolean;
+  hackerLocation?: boolean;
+  hackerPin?: boolean;
+  directEntry?: boolean;
+}
+
 export default function Round1() {
   const [de, setDe] = useState<string>("");
+  const [correct, setCorrect] = useState<Round1Correct | undefined>(undefined);
   const [form, setForm] = useState<Round1Content>({
     hiddenRoute: "",
     loginRoute: "",
@@ -49,8 +64,9 @@ export default function Round1() {
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addForm.mutate(form, {
-      onSuccess: () => {
+      onSuccess: ({ points, maxPoints, correct }) => {
         alert("Form submitted successfully");
+        setCorrect(() => correct);
       },
       onError: (err) => {
         alert("Error submitting form");
@@ -86,8 +102,24 @@ export default function Round1() {
                 }
                 type="text"
                 placeholder="Hidden route"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.hiddenRoute
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.hiddenRoute ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -102,8 +134,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Login route"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
+                    ? correct.loginRoute
+                      ? "border-2 border-green-500"
+                      : "border-2 border-red-500"
+                    : "")
+                }
               />
+              {correct ? (
+                correct?.loginRoute ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -118,8 +166,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Ceaser cipher key"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                    "w-full rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.shifts
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
               />
+              {correct ? (
+                correct?.shifts ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -134,8 +198,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Playfair cipher key"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                    "w-full rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.playfairKey
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
               />
+              {correct ? (
+                correct?.playfairKey ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -150,8 +230,24 @@ export default function Round1() {
                   })
                 }
                 placeholder="Admin password"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                    "w-full rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.passcode
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
               />
+              {correct !== undefined ? (
+                correct?.passcode ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -204,7 +300,8 @@ export default function Round1() {
           </div>
           <div className="flex flex-col items-center gap-2">
             <h2 className="text-center font-semibold">Puzzle 6</h2>
-            <div className="flex w-full flex-row items-center space-x-2">
+            <div className="flex w-full flex-row flex-wrap justify-center items-center gap-2">
+              <div className="flex justify-center items-center flex-1 max-w-sm">
               <input
                 type="text"
                 value={form.hackerName}
@@ -214,8 +311,26 @@ export default function Round1() {
                   })
                 }
                 placeholder="Hacker name"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                    "flex-1 rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.hackerName
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
               />
+              {correct ? (
+                correct?.hackerName ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
+              </div>
+              <div className="flex justify-center items-center flex-1 max-w-sm">
               <input
                 type="text"
                 value={form.hackerLocation}
@@ -225,9 +340,27 @@ export default function Round1() {
                   })
                 }
                 placeholder="Hacker location"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                    "flex-1 rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.hackerLocation
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
               />
-              <input
+              {correct ? (
+                correct?.hackerLocation ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
+              </div>
+              <div className="flex justify-center items-center flex-1 max-w-sm">
+                <input
                 type="text"
                 value={form.hackerPin}
                 onChange={(e) =>
@@ -236,8 +369,25 @@ export default function Round1() {
                   })
                 }
                 placeholder="Hacker pin"
-                className="w-full rounded-full border border-gray-300 p-2"
+                className={
+                    "flex-1 rounded-full border border-gray-300 p-2 " +
+                    (correct
+                      ? correct.hackerPin
+                        ? "border-2 border-green-500"
+                        : "border-2 border-red-500"
+                      : "")
+                  }
               />
+              {correct ? (
+                correct?.hackerPin ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
+                ) : (
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
+              </div>
             </div>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -247,7 +397,13 @@ export default function Round1() {
                 <input
                   id={`de-input-${index}`}
                   key={index}
-                  className="mx-2 h-8 w-8 border border-gray-300 text-center text-xl"
+                  className={"h-8 w-8 border border-gray-300 text-center text-xl "+
+                        (correct
+                            ? correct.directEntry
+                            ? "border-2 border-green-500"
+                            : "border-2 border-red-500"
+                            : "")
+                        }
                   type="text"
                   maxLength={1}
                   value={de[index] ?? ""}

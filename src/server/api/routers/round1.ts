@@ -3,6 +3,19 @@ import { createTRPCRouter, protectedProcedure} from '../trpc';
 import { env } from '~/env.mjs';
 import { Round1Content } from '~/utils/def';
 
+interface Round1Correct {
+    hiddenRoute?: boolean;
+    loginRoute?: boolean;
+    shifts?: boolean;
+    playfairKey?: boolean;
+    passcode?: boolean;
+    captchaSolved?: boolean;
+    hackerName?: boolean;
+    hackerLocation?: boolean;
+    hackerPin?: boolean;
+    directEntry?: boolean;
+  }
+  
 
 const answers=env.ROUND1_ANSWERS
 export const round1Router = createTRPCRouter({
@@ -13,29 +26,46 @@ export const round1Router = createTRPCRouter({
         throw new Error("User not found")
     }
     let points=0;
+    const correct:Round1Correct={}
     if(input.hiddenRoute?.replace("/","")===answers.hiddenRoute){
         points+=20;
+        correct.hiddenRoute=true;
     }
     if(input.loginRoute?.replace("/","")===answers.loginRoute){
         points+=20;
+        correct.loginRoute=true;
     }
     if(input.shifts===answers.shifts){
         points+=20;
+        correct.shifts=true;
     }
     if(input.playfairKey?.toLowerCase()===answers.playfairKey){
         points+=20;
+        correct.playfairKey=true;
     }
     if(input.passcode?.toLowerCase()===answers.passcode){
         points+=20;
+        correct.passcode=true;
     }
     if(input.captchaSolved===answers.captchaSolved){
         points+=20;
+        correct.captchaSolved=true;
     }
-    if(input.hackerName?.toLowerCase()===answers.hackerName && input.hackerLocation?.replace(",","")===answers.hackerLocation?.replace(",","") && input.hackerPin===answers.hackerPin){
+    if(input.hackerName?.toLowerCase()===answers.hackerName && input.hackerLocation?.replace(",","").replace(" ","")===answers.hackerLocation?.replace(",","").replace(" ","") && input.hackerPin===answers.hackerPin){
         points+=20;
+    }
+    if(input.hackerName?.toLowerCase()===answers.hackerName){
+        correct.hackerName=true;
+    }
+    if(input.hackerLocation?.replace(",","").replace(" ","")===answers.hackerLocation?.replace(",","").replace(" ","")){
+        correct.hackerLocation=true;
+    }
+    if(input.hackerPin===answers.hackerPin){
+        correct.hackerPin=true;
     }
     if(input.directEntry===answers.directEntry){
         points=140;
+        correct.directEntry=true;
     }
 
     if(points>user.points1){
@@ -55,6 +85,6 @@ export const round1Router = createTRPCRouter({
 
         }}).catch((err)=>{throw new Error("Error creating round 1 entry")})
     }
-    return [points,user.points1];
+    return {points,maxPoints:user.points1,correct};
   })
 });
