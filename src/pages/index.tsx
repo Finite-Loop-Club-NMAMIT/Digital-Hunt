@@ -1,28 +1,26 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import SignPage from "~/components/signpage";
+// import { useRouter } from "next/router";
 
 export default function Instagram() {
   const { status: status } = useSession();
-  const router = useRouter();
-  const { error } = router.query;
+  // const router = useRouter();
+  // const { error } = router.query;
 
 
   // User should be promted to login after sometime so that we can check createdAt
   //Instagram route
   //hidden element to ksjf38949.tsx
   if (status === "unauthenticated") {
-    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4">
-      {error && <div className="text-red-600">Please use nmamit email to login</div>}
-      <button className="bg-black rounded-lg shadow-lg text-white px-4 py-2"
-        onClick={() => signIn("google")}>Sign in</button>
-    </main>;
+    return <SignPage/>;
   }
   if (status === "loading") {
-    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4">
-      <div className="text-2xl">Loading...</div>
+    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4 bg-[#07040e]">
+      <div className="w-12 h-12 rounded-full animate-spin border-x-8 border-solid border-green-500 border-t-transparent"></div>
+      <div className="text-white">Loading...</div>
     </main>;
   }
   else {
@@ -70,6 +68,9 @@ export default function Instagram() {
                     src="/assets/instagram-logo.png"
                     alt="Instagram logo"
                     title="Instagram logo"
+                    onClick={async() => {
+                      await signOut()
+                    }}
                   />
                 </h1>
 

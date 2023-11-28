@@ -18,7 +18,7 @@ const config = {
     defaultLocale: "en",
   },
   images:{
-    domains:["localhost:3000","intsagram.tech"]
+    domains:["localhost:3000","intsagram.tech","res.cloudinary.com"]
   }
 };
 
