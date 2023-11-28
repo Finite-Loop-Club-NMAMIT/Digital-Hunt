@@ -43,7 +43,6 @@ const SignPage: FunctionComponent = () => {
         <>
             <main className="max-w-screen h-auto flex flex-col justify-center items-center gap-4 bg-black">
                 <div className="flex flex-col justify-center items-center text-center w-full min-h-screen bg-[url('/assets/mainbg.jpeg')] bg-cover bg-center py-20 shadow-custom">
-                    {/* <Image src={"/assets/flclogo.png"} alt="flc logo" height={100} width={100} className="mb-14"/> */}
                     <Image src={"/assets/flc_logo.png"} alt="flc logo" height={300} width={400} className="mb-14"/>
                     <h1 className="text-3xl font-bold text-white px-2">Finite Loop Club presents</h1>
                     <h1 className="flex text-4xl md:text-5xl font-bold title mb-2">
