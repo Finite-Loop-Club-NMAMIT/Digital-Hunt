@@ -8,34 +8,34 @@ import BlurImage from "../blurImage";
 
 const members = [
     {
-      img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
+      img: "https://res.cloudinary.com/dwfiisxz0/image/upload/v1675567338/core-team-uploads/gmfblohgksgpm0eudvr4.jpg",
       name: "Nidheesha T",
-      linkedin: "https://www.linkedin.com/in/johndoe",
-      github: "https://github.com/johndoe"
+      linkedin: "https://www.linkedin.com/in/nidheesha-t-8b6685246/",
+      github: "https://github.com/NidheeshaT"
     },
     {
-      img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
+      img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1701168215/extras/nsprofile_keerthan.jpg",
       name: "Keerthan NS",
-      linkedin: "https://www.linkedin.com/in/janesmith",
-      github: "https://github.com/janesmith"
+      linkedin: "https://www.linkedin.com/in/keerthan-n-s-220142208/",
+      github: "https://github.com/keerthan-ns"
     },
     {
-      img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
+      img: "https://res.cloudinary.com/dwfiisxz0/image/upload/v1675567322/core-team-uploads/hef3xncibdxghrcw3ao5.png",
       name: "Nagaraj Pandith",
-      linkedin: "https://www.linkedin.com/in/alexjohnson",
-      github: "https://github.com/alexjohnson"
+      linkedin: "https://www.linkedin.com/in/nagaraj-pandith/",
+      github: "https://github.com/nagarajpandith"
     },
     {
-      img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
+      img: "https://res.cloudinary.com/dwfiisxz0/image/upload/v1697642130/core-team-uploads/ht6owgzjtxt98lzlco1n.jpg",
       name: "Nandan R Pai",
-      linkedin: "https://www.linkedin.com/in/emilywilliams",
-      github: "https://github.com/emilywilliams"
+      linkedin: "https://www.linkedin.com/in/nandanpai09",
+      github: "https://github.com/nandanpi"
     },
     {
-      img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
-      name: "Srivatsa R. Upadhya",
-      linkedin: "https://www.linkedin.com/in/michaelbrown",
-      github: "https://github.com/michaelbrown"
+      img: "https://res.cloudinary.com/dwfiisxz0/image/upload/v1696951101/core-team-uploads/deaaekx6ayukmaq75q7j.jpg",
+      name: "Srivatsa R Upadhya",
+      linkedin: "https://www.linkedin.com/in/srivatsa-r-upadhya-060373227/",
+      github: "https://github.com/SrivatsaRUpadhya/"
     }
 ];
 
