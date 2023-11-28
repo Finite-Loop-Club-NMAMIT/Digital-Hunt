@@ -4,6 +4,7 @@ import Link from "next/link";
 import ImageSlider from "../imageslider";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import BlurImage from "../blurImage";
+import { signIn } from "next-auth/react";
 
 const members = [
     {
@@ -79,7 +80,7 @@ const SignPage: FunctionComponent = () => {
                     <ImageSlider />
                     <div className="flex flex-wrap gap-3 items-center justify-center">
                         <button className="text-white font-normal text-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br ring-green-900 ring-4 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-800/80 rounded-lg px-5 py-2.5 text-center me-2 mb-2"
-                            onClick={() => {console.log("signin")}}>
+                onClick={() => signIn("google")}>
                             SignIn to continue 🏁
                         </button>
                         <Link className="text-white font-normal text-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br ring-green-900 ring-4 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-800/80 rounded-lg px-5 py-2.5 text-center me-2 mb-2"
