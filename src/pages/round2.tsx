@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { api } from "~/utils/api";
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
@@ -62,12 +62,27 @@ export default function Round2() {
   const { status: status } = useSession();
   const router = useRouter();
 
+  async function authenticate() {
+    await signIn("google");
+  }
+  
   if (status === "unauthenticated") {
-    router.push("/", undefined).catch((e) => console.log(e));
+    authenticate()
+      .then(() => {
+        <></>
+      })
+      .catch((error) => {
+        console.error("Google sign-in failed", error);
+      });
   }
+  
   if (status === "loading") {
-    return <></>;
+    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4 ">
+              <div className="w-12 h-12 rounded-full animate-spin border-x-8 border-solid border-black border-t-transparent"></div>
+              <div className="text-white">Loading...</div>
+            </main>;
   }
+
   return (
     <>
       <div className="mx-3 mt-3 flex flex-col p-10">

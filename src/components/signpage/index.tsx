@@ -9,31 +9,31 @@ import BlurImage from "../blurImage";
 const members = [
     {
       img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
-      name: "John Doe",
+      name: "Nidheesha T",
       linkedin: "https://www.linkedin.com/in/johndoe",
       github: "https://github.com/johndoe"
     },
     {
       img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
-      name: "Jane Smith",
+      name: "Keerthan NS",
       linkedin: "https://www.linkedin.com/in/janesmith",
       github: "https://github.com/janesmith"
     },
     {
       img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
-      name: "Alex Johnson",
+      name: "Nagaraj Pandith",
       linkedin: "https://www.linkedin.com/in/alexjohnson",
       github: "https://github.com/alexjohnson"
     },
     {
       img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
-      name: "Emily Williams",
+      name: "Nandan R Pai",
       linkedin: "https://www.linkedin.com/in/emilywilliams",
       github: "https://github.com/emilywilliams"
     },
     {
       img: "https://res.cloudinary.com/dg7etzwks/image/upload/v1683852443/portfolioProjects/xhy9v39vuzy3qzbfgjdf.jpg",
-      name: "Michael Brown",
+      name: "Srivatsa R. Upadhya",
       linkedin: "https://www.linkedin.com/in/michaelbrown",
       github: "https://github.com/michaelbrown"
     }
