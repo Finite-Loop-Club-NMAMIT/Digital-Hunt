@@ -19,12 +19,6 @@ const members = [
       github: "https://github.com/keerthan-ns"
     },
     {
-      img: "https://res.cloudinary.com/dwfiisxz0/image/upload/v1675567322/core-team-uploads/hef3xncibdxghrcw3ao5.png",
-      name: "Nagaraj Pandith",
-      linkedin: "https://www.linkedin.com/in/nagaraj-pandith/",
-      github: "https://github.com/nagarajpandith"
-    },
-    {
       img: "https://res.cloudinary.com/dwfiisxz0/image/upload/v1697642130/core-team-uploads/ht6owgzjtxt98lzlco1n.jpg",
       name: "Nandan R Pai",
       linkedin: "https://www.linkedin.com/in/nandanpai09",
@@ -35,6 +29,12 @@ const members = [
       name: "Srivatsa R Upadhya",
       linkedin: "https://www.linkedin.com/in/srivatsa-r-upadhya-060373227/",
       github: "https://github.com/SrivatsaRUpadhya/"
+    },
+    {
+      img: "https://res.cloudinary.com/dwfiisxz0/image/upload/v1675567322/core-team-uploads/hef3xncibdxghrcw3ao5.png",
+      name: "Nagaraj Pandith",
+      linkedin: "https://www.linkedin.com/in/nagaraj-pandith/",
+      github: "https://github.com/nagarajpandith"
     }
 ];
 
@@ -89,7 +89,6 @@ const SignPage: FunctionComponent = () => {
                     </div>
                 </div>
                 <div className="mt-4 w-full flex flex-col items-center gap-5 text-center mb-4 px-2 pb-3">
-                    {/* <h1 className="text-3xl font-semibold text-green-300 px-2">Meet the puzzle building team</h1> */}
                     <h1 className="text-3xl font-semibold neonText px-2">Meet the puzzle building team</h1>
                     <div className="mt-10 w-full flex flex-wrap justify-center gap-8">
                     {
@@ -100,10 +99,10 @@ const SignPage: FunctionComponent = () => {
                                         <BlurImage
                                           className="rounded-2xl object-cover drop-shadow-md transition-all delay-100 duration-200 hover:drop-shadow-2xl"
                                           src={member.img}
-                                          width={350}
-                                          height={350}
+                                          width={220}
+                                          height={220}
                                           alt={member.name}
-                                          style={{ objectFit: "cover", height: "350px" }}
+                                          style={{ objectFit: "cover", height: "220px" }}
                                         />
                                       </div>
                                       <div className="mt-6 text-center">
