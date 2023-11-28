@@ -1,9 +1,8 @@
 import { type FunctionComponent } from "react";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import ImageSlider from "../imageslider";
-import { AiFillGithub, AiFillLinkedin, AiFillStar } from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import BlurImage from "../blurImage";
 
 const members = [
