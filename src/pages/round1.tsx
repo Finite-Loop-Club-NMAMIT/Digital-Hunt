@@ -1,9 +1,11 @@
 import React, { useState, type ChangeEvent } from "react";
 import { api } from "~/utils/api";
-import { useSession, signIn } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
+import { redirect } from "next/dist/server/api-utils";
+import { LogOut } from "lucide-react";
 
 interface Round1Content {
   hiddenRoute: string;
@@ -108,9 +110,24 @@ export default function Round1() {
             </main>;
   }
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      window.location.href = "/";
+    } catch (error) {
+      console.error('Sign-out or redirection failed', error);
+    }
+  };
+
   return (
     <>
       <div className="mx-3 mt-3 flex flex-col p-10">
+        <div className="flex flex-row w-full justify-end">
+          <button type="button" className="inline-flex gap-2 items-center text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            onClick={handleSignOut}>
+            <LogOut/> Sign Out
+          </button>
+        </div>
         <h1 className="mb-5 text-center text-2xl font-extrabold leading-none tracking-tight text-blue-600 md:text-3xl lg:text-4xl">
           Round 1 Submission Form
         </h1>

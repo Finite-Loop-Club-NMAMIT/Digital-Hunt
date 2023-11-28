@@ -68,9 +68,6 @@ export default function Instagram() {
                     src="/assets/instagram-logo.png"
                     alt="Instagram logo"
                     title="Instagram logo"
-                    onClick={async() => {
-                      await signOut()
-                    }}
                   />
                 </h1>
 
