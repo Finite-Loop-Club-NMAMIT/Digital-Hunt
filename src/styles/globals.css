@@ -12,7 +12,7 @@
     /* part:2/4 */
     code:"J1BD"
 }
-/* box-shadow: 0 15px 25px rgba(0, 128, 0, 0.2), 0 10px 10px rgba(0, 128, 0, 0.15); 
+/* box-shadow: 0 15px 25px rgba(0, 128, 0, 0.2), 0 10px 10px rgba(0, 128, 0, 0.15); */
 
 /* .shadow-custom {
   position: relative;
@@ -42,12 +42,48 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0; /* Adjusted to be at the bottom */
-  height: 10px; /* Adjusted height of the shadow below the element */
+  bottom: 0; 
+  height: 10px; 
   background: linear-gradient(rgba(0, 255, 0, 0.373), rgba(0, 255, 0, 0.471));
   pointer-events: none;
   z-index: -1;
 }
+/* .shadow-custom {
+  position: relative;
+  box-shadow: 0 15px 25px rgba(80, 240, 80, 0.71), 0 10px 10px rgba(65, 237, 65, 0.589);
+}
+
+.shadow-custom::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  background: linear-gradient(rgba(108, 239, 108, 0.rgba(126, 243, 126, 0), 0));
+  pointer-events: none;
+  z-index: -1;
+} */
+
+/* .shadow-custom {
+  position: relative;
+  box-shadow: 0 15px 25px rgba(0, 255, 0, 0.2), 0 10px 10px rgba(0, 255, 0, 0.15);
+}
+
+.shadow-custom::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  background: linear-gradient(rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0));
+  pointer-events: none;
+  z-index: -1;
+} */
+
+
+
 
 
 .neonText {
