@@ -4,7 +4,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
-import { redirect } from "next/dist/server/api-utils";
 import { LogOut } from "lucide-react";
 
 interface Round1Content {
