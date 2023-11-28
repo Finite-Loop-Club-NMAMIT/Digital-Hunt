@@ -39,6 +39,8 @@ const members = [
     }
 ];
 
+const images = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png", "13.png", "14.png"];
+
 const SignPage: FunctionComponent = () => {
     return (
         <>
@@ -77,7 +79,7 @@ const SignPage: FunctionComponent = () => {
                 </div>
                 <div className="mt-4 w-full flex flex-col items-center gap-5 text-center mb-4 px-2 shadow-custom pb-3">
                     <h1 className="text-3xl font-semibold neonText px-2">Round 1 Storyline</h1>
-                    <ImageSlider />
+                    <ImageSlider propsImages={images}/>
                     <div className="flex flex-wrap gap-3 items-center justify-center">
                         <button className="text-white font-normal text-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br ring-green-900 ring-4 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-800/80 rounded-lg px-5 py-2.5 text-center me-2 mb-2"
                 onClick={() => signIn("google")}>
