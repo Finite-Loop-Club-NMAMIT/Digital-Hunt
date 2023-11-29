@@ -49,13 +49,13 @@ const SignPage: FunctionComponent = () => {
                     <Image src={"/assets/flc_logo.png"} alt="flc logo" height={300} width={400} className="mb-14"/>
                     <h1 className="text-3xl font-bold text-white px-2">Finite Loop Club presents</h1>
                     <h1 className="flex text-4xl md:text-5xl font-bold title mb-2">
-                    <div className="text-5xl tracking-wide neonText">
+                    <div className="my-8 text-5xl tracking-wide neonText">
                         Digital-Hunt 
                     </div>
                     </h1>
                 </div>
                 <div className="mt-12 w-full flex flex-col items-center gap-5 text-center mb-4 px-2 shadow-custom py-3 ">
-                    <h1 className="text-3xl font-semibold neonText px-2">Champions Corner: Dive into the Leaderboard</h1>
+                    <h1 className="my-6 text-3xl font-semibold neonText px-2">Champions Corner: Dive into the Leaderboard</h1>
                     <Link className="text-white text-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br ring-green-900 ring-4 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-800/80 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2"
                         href={"/leaderboard"} rel="noopener noreferrer" target="_blank" onClick={() => {console.log("leaderboard")}}>
                         View Leaderboard 🏆
@@ -78,7 +78,7 @@ const SignPage: FunctionComponent = () => {
                     </div>
                 </div>
                 <div className="mt-4 w-full flex flex-col items-center gap-5 text-center mb-4 px-2 shadow-custom pb-3">
-                    <h1 className="text-3xl font-semibold neonText px-2">Round 1 Storyline</h1>
+                    <h1 className="my-6 text-3xl font-semibold neonText px-2">Round 1 Storyline</h1>
                     <ImageSlider propsImages={images}/>
                     <div className="flex flex-wrap gap-3 items-center justify-center">
                         <button className="text-white font-normal text-md bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br ring-green-900 ring-4 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-800/80 rounded-lg px-5 py-2.5 text-center me-2 mb-2"
@@ -92,7 +92,7 @@ const SignPage: FunctionComponent = () => {
                     </div>
                 </div>
                 <div className="mt-4 w-full flex flex-col items-center gap-5 text-center mb-4 px-2 pb-3">
-                    <h1 className="text-3xl font-semibold neonText px-2">Meet the puzzle building team</h1>
+                    <h1 className="my-6 text-3xl font-semibold neonText px-2">Meet the puzzle building team</h1>
                     <div className="mt-10 w-full flex flex-wrap justify-center gap-8">
                     {
                         members.map((member, index) =>

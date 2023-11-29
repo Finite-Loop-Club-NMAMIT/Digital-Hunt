@@ -31,10 +31,8 @@
   z-index: -1;
 }
 .neonText {
-  line-height: calc(20px + 10vh);
   text-shadow: 0 0 5px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00cc00, 0 0 10px #00ff00, 0 0 98px #00cc00;
-  color: #b0ffb0; /* Slightly lighter green text color */
-  /* font-family: "Sacramento", cursive; */
+  color: #b0ffb0; 
   text-align: center;
   animation: blink 3s infinite;
   -webkit-animation: blink 4s infinite;
