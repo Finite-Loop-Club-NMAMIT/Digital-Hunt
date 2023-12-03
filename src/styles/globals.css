@@ -193,7 +193,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: 70vw;
+  backdrop-filter: blur;
   padding-top: 5rem;
   padding-right: 2rem;
   z-index: 0;
@@ -206,6 +206,12 @@
   transform-origin: 0% 0%;
   transform: translate(103%, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+.glass-panel {
+  background-color: rgb(44, 203, 102, 20%);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
 #menuToggle input:checked ~ ul {

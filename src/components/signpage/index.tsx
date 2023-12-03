@@ -173,7 +173,10 @@ const SignPage: FunctionComponent = () => {
           </div>
         </div>
 
-        <div className="shadow-custom w-full space-y-12 py-20">
+        <div
+          className="shadow-custom w-full space-y-12 px-4 py-24"
+          id="storyline"
+        >
           <h1 className="neonText px-2 text-3xl font-semibold">
             Round 1 Storyline
           </h1>

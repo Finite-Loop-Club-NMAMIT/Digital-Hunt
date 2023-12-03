@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 const NavItems = [
   {
@@ -58,13 +58,13 @@ const Navbar: React.FC = () => {
       <div className="fixed z-50 flex w-full px-4 backdrop-blur-lg md:hidden">
         <div className="flex">
           <div className="pt-2">
-            <a href="/">
+            <Link href="/">
               <img
                 src="/assets/flc_logo_crop.png"
                 className=" w-16"
                 alt="logo"
               />
-            </a>
+            </Link>
           </div>
         </div>
         <nav>
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
 
             <ul
               id="menu"
-              className=" space-y-6 bg-[#2ccb66] bg-opacity-5 pr-4 text-right shadow-[#2ccb66] drop-shadow-xl backdrop-blur-lg"
+              className=" glass-panel z-50 w-[60vw] space-y-6 bg-opacity-5 pr-4 text-right shadow-[#2ccb66] drop-shadow-xl"
             >
               {NavItems.map((item, key) => (
                 <li key={key} className="text-xl">
