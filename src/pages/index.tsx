@@ -10,20 +10,20 @@ export default function Instagram() {
   // const router = useRouter();
   // const { error } = router.query;
 
-
   // User should be promted to login after sometime so that we can check createdAt
   //Instagram route
   //hidden element to ksjf38949.tsx
   if (status === "unauthenticated") {
-    return <SignPage/>;
+    return <SignPage />;
   }
   if (status === "loading") {
-    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4 bg-[#07040e]">
-      <div className="w-12 h-12 rounded-full animate-spin border-x-8 border-solid border-green-500 border-t-transparent"></div>
-      <div className="text-white">Loading...</div>
-    </main>;
-  }
-  else {
+    return (
+      <main className="flex h-screen w-screen flex-col items-center justify-center gap-4 bg-[#07040e]">
+        <div className="h-12 w-12 animate-spin rounded-full border-x-8 border-solid border-green-500 border-t-transparent"></div>
+        <div className="text-white">Loading...</div>
+      </main>
+    );
+  } else {
     // router.replace({ pathname: router.pathname, query: "" }, undefined, { shallow: true }).catch((e) => console.error(e))
     return (
       <>
@@ -48,30 +48,37 @@ export default function Instagram() {
             <section>
               <Image
                 height={300}
-                width={320}      
+                width={320}
                 priority={true}
-                className="w-auto h-auto hidden sm:block"
+                className="hidden h-auto w-auto sm:block"
                 src="/assets/phone-static.png"
                 alt="PhoneStatic"
                 title="PhoneStatic"
               />
             </section>
 
-           
             <section className="w-[300px] sm:w-[340px]">
               <div className="border border-gray-300 px-10 pb-4 pt-12">
                 <h1 title="Instagram" className="flex justify-center pb-10">
                   <Image
                     height={0}
                     width={140}
-                    className="w-auto h-auto"
+                    className="h-auto w-auto"
                     src="/assets/instagram-logo.png"
                     alt="Instagram logo"
                     title="Instagram logo"
                   />
                 </h1>
 
-                <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Security alert! We have your username and password!! Just kidding, don't reveal your passwords like this :)")}}>
+                <form
+                  className="space-y-4"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    alert(
+                      "Security alert! We have your username and password!! Just kidding, don't reveal your passwords like this :)",
+                    );
+                  }}
+                >
                   <div className="grid grid-cols-1 gap-2 text-xs">
                     <input
                       type="text"
@@ -87,14 +94,19 @@ export default function Instagram() {
                     />
                   </div>
 
-                  <button className="w-full rounded-lg bg-[#4CB5F9] py-2 text-sm font-bold text-white" type="submit">
+                  <button
+                    className="w-full rounded-lg bg-[#4CB5F9] py-2 text-sm font-bold text-white"
+                    type="submit"
+                  >
                     Log in
                   </button>
                 </form>
 
                 <div className="flex items-center justify-center py-4">
                   <span className="w-full border-b border-gray-300"></span>
-                  <span className="mx-4 text-sm font-bold text-gray-400">OR</span>
+                  <span className="mx-4 text-sm font-bold text-gray-400">
+                    OR
+                  </span>
                   <span className="w-full border-b border-gray-300"></span>
                 </div>
 
@@ -133,7 +145,7 @@ export default function Instagram() {
                       <Image
                         height={0}
                         width={0}
-                        className="w-auto h-[40px]"
+                        className="h-[40px] w-auto"
                         src="/assets/googleplay-button.png"
                         alt="GooglePlayButton"
                         title="GooglePlayButton"
@@ -146,7 +158,7 @@ export default function Instagram() {
                       <Image
                         height={0}
                         width={0}
-                        className="w-auto h-[40px]"
+                        className="h-[40px] w-auto"
                         src="/assets/microsoft-button.png"
                         alt="AppStoreButton"
                         title="AppStoreButton"
@@ -181,7 +193,10 @@ export default function Instagram() {
               >
                 <li>API</li>
               </a>
-              <a href="https://www.instagram.com/legal/privacy/" target="_blank">
+              <a
+                href="https://www.instagram.com/legal/privacy/"
+                target="_blank"
+              >
                 <li>Privacy</li>
               </a>
               <a href="https://www.instagram.com/legal/terms/" target="_blank">
@@ -219,8 +234,12 @@ export default function Instagram() {
             </div>
           </footer>
         </main>
-          <button className="block bg-black rounded-[50px] my-3 m-auto shadow-lg text-white px-4 py-2"
-        onClick={() => signOut()}>Sign Out</button>
+        {/* <button
+          className="m-auto my-3 block rounded-[50px] bg-black px-4 py-2 text-white shadow-lg"
+          onClick={() => signOut()}
+        >
+          Sign Out
+        </button> */}
       </>
     );
   }

@@ -72,12 +72,34 @@ export default function Round1() {
     e.preventDefault();
     addForm.mutate(form, {
       onSuccess: ({ points, previousPoints, correct }) => {
-        if(points===140){
-            alert("Congratulations! You have completed the round with full points! \n"+"Your submission points: "+points+"/"+"140"+"\n"+"Previous Max points: "+previousPoints+"/"+"140");   
-            router.push("/ZCisJ1BDKAaXtmJC", undefined).catch((e) => console.log(e));
-        }
-        else
-        alert("Your submission points: "+points+"/"+"140"+"\n"+"Max points: "+previousPoints+"/"+"140");
+        if (points === 140) {
+          alert(
+            "Congratulations! You have completed the round with full points! \n" +
+              "Your submission points: " +
+              points +
+              "/" +
+              "140" +
+              "\n" +
+              "Previous Max points: " +
+              previousPoints +
+              "/" +
+              "140",
+          );
+          router
+            .push("/ZCisJ1BDKAaXtmJC", undefined)
+            .catch((e) => console.log(e));
+        } else
+          alert(
+            "Your submission points: " +
+              points +
+              "/" +
+              "140" +
+              "\n" +
+              "Max points: " +
+              previousPoints +
+              "/" +
+              "140",
+          );
         setCorrect(() => correct);
       },
       onError: () => {
@@ -91,22 +113,24 @@ export default function Round1() {
   async function authenticate() {
     await signIn("google");
   }
-  
+
   if (status === "unauthenticated") {
     authenticate()
       .then(() => {
-        <></>
+        <></>;
       })
       .catch((error) => {
         console.error("Google sign-in failed", error);
       });
   }
-  
+
   if (status === "loading") {
-    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4 ">
-              <div className="w-12 h-12 rounded-full animate-spin border-x-8 border-solid border-black border-t-transparent"></div>
-              <div className="text-white">Loading...</div>
-            </main>;
+    return (
+      <main className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+        <div className="h-12 w-12 animate-spin rounded-full border-x-8 border-solid border-black border-t-transparent"></div>
+        <div className="text-white">Loading...</div>
+      </main>
+    );
   }
 
   const handleSignOut = async () => {
@@ -114,19 +138,19 @@ export default function Round1() {
       await signOut();
       window.location.href = "/";
     } catch (error) {
-      console.error('Sign-out or redirection failed', error);
+      console.error("Sign-out or redirection failed", error);
     }
   };
 
   return (
     <>
       <div className="mx-3 mt-3 flex flex-col p-10">
-        <div className="flex flex-row w-full justify-end">
+        {/* <div className="flex flex-row w-full justify-end">
           <button type="button" className="inline-flex gap-2 items-center text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
             onClick={handleSignOut}>
             <LogOut/> Sign Out
           </button>
-        </div>
+        </div> */}
         <h1 className="mb-5 text-center text-2xl font-extrabold leading-none tracking-tight text-blue-600 md:text-3xl lg:text-4xl">
           Round 1 Submission Form
         </h1>

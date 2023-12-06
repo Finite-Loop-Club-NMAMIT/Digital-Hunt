@@ -60,9 +60,9 @@ const images = [
 const SignPage: FunctionComponent = () => {
   return (
     <>
-      <nav className="w-screen">
+      {/* <nav className="w-screen">
         <Navbar />
-      </nav>
+      </nav> */}
       <main className="max-w-screen flex h-auto flex-col items-center justify-center gap-4 bg-black">
         <div className="shadow-custom flex min-h-screen w-full flex-col items-center justify-center bg-[url('/assets/mainbg.jpeg')] bg-cover bg-center py-20 text-center ">
           <Image
@@ -72,17 +72,17 @@ const SignPage: FunctionComponent = () => {
             width={400}
             className="mb-14 px-4"
           />
-          <h1 className="px-2 text-2xl md:text-4xl font-bold text-white">
+          <h1 className="px-2 text-2xl font-bold text-white md:text-4xl">
             Finite Loop Club presents
           </h1>
 
           <h1 className="title mb-2 flex text-4xl font-bold md:text-5xl">
-            <div className="neonText my-8 text-4xl md:text-5xl  tracking-wide">
+            <div className="neonText my-8 text-4xl tracking-wide  md:text-5xl">
               Digital-Hunt
             </div>
           </h1>
 
-          <h2 className="text-sm md:text-lg px-3 text-white">
+          <h2 className="px-3 text-sm text-white md:text-lg">
             Read instructions before you start to play
           </h2>
 

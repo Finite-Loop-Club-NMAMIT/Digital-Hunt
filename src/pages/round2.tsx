@@ -17,14 +17,14 @@ interface Round2Content {
 }
 
 interface Round2Correct {
-    firstWord?: boolean;
-    secondWord?: boolean;
-    thirdWord?: boolean;
-    hexahue?: boolean;
-    latitude?: boolean;
-    longitude?: boolean;
-    asciiResult?: boolean;
-    badge?: boolean;
+  firstWord?: boolean;
+  secondWord?: boolean;
+  thirdWord?: boolean;
+  hexahue?: boolean;
+  latitude?: boolean;
+  longitude?: boolean;
+  asciiResult?: boolean;
+  badge?: boolean;
 }
 
 export default function Round2() {
@@ -44,14 +44,24 @@ export default function Round2() {
     badge: "",
   });
   const addForm = api.round2.submitForm.useMutation();
-  const [correct, setCorrect] = useState<Round2Correct|undefined>();
+  const [correct, setCorrect] = useState<Round2Correct | undefined>();
 
   function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     addForm.mutate(form, {
-      onSuccess: ({points,previousPoints,correct}) => {
+      onSuccess: ({ points, previousPoints, correct }) => {
         setCorrect(correct);
-        alert("Your submission points: "+points+"/"+"140"+"\n"+"Previous Max points: "+previousPoints+"/"+"140");
+        alert(
+          "Your submission points: " +
+            points +
+            "/" +
+            "140" +
+            "\n" +
+            "Previous Max points: " +
+            previousPoints +
+            "/" +
+            "140",
+        );
       },
       onError: () => {
         alert("Error submitting form");
@@ -64,22 +74,24 @@ export default function Round2() {
   async function authenticate() {
     await signIn("google");
   }
-  
+
   if (status === "unauthenticated") {
     authenticate()
       .then(() => {
-        <></>
+        <></>;
       })
       .catch((error) => {
         console.error("Google sign-in failed", error);
       });
   }
-  
+
   if (status === "loading") {
-    return <main className="w-screen h-screen flex flex-col justify-center items-center gap-4 ">
-              <div className="w-12 h-12 rounded-full animate-spin border-x-8 border-solid border-black border-t-transparent"></div>
-              <div className="text-white">Loading...</div>
-            </main>;
+    return (
+      <main className="flex h-screen w-screen flex-col items-center justify-center gap-4 ">
+        <div className="h-12 w-12 animate-spin rounded-full border-x-8 border-solid border-black border-t-transparent"></div>
+        <div className="text-white">Loading...</div>
+      </main>
+    );
   }
 
   const handleSignOut = async () => {
@@ -87,18 +99,18 @@ export default function Round2() {
       await signOut();
       window.location.href = "/";
     } catch (error) {
-      console.error('Sign-out or redirection failed', error);
+      console.error("Sign-out or redirection failed", error);
     }
   };
 
   return (
     <>
       <div className="mx-3 mt-3 flex flex-col p-10">
-        <div className="flex flex-row w-full justify-end">
-          <button type="button" className="inline-flex gap-2 items-center text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+        <div className="flex w-full flex-row justify-end">
+          {/* <button type="button" className="inline-flex gap-2 items-center text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
             onClick={handleSignOut}>
             <LogOut/> Sign Out
-          </button>
+          </button> */}
         </div>
         <h1 className="mb-5 text-center text-2xl font-extrabold leading-none tracking-tight text-blue-600 md:text-3xl lg:text-4xl">
           Round 2 Submission Form
@@ -129,8 +141,9 @@ export default function Round2() {
                   })
                 }
                 placeholder="First word"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.firstWord
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
@@ -201,8 +214,9 @@ export default function Round2() {
                   })
                 }
                 placeholder="Second word"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.firstWord
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
@@ -273,23 +287,24 @@ export default function Round2() {
                   })
                 }
                 placeholder="Third word"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.thirdWord
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
                     : "")
                 }
               />
-                {correct ? (
-                    correct?.thirdWord ? (
-                    <TiTick className="h-6 w-6 text-green-500" />
-                    ) : (
-                    <RxCross2 className="h-6 w-6 text-red-500" />
-                    )
+              {correct ? (
+                correct?.thirdWord ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
                 ) : (
-                    <></>
-                )}
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 3 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -345,23 +360,24 @@ export default function Round2() {
                   })
                 }
                 placeholder="** ** ** ** ** ** ** ** ** ** **"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.hexahue
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
                     : "")
                 }
               />
-                {correct ? (
-                    correct?.hexahue ? (
-                    <TiTick className="h-6 w-6 text-green-500" />
-                    ) : (
-                    <RxCross2 className="h-6 w-6 text-red-500" />
-                    )
+              {correct ? (
+                correct?.hexahue ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
                 ) : (
-                    <></>
-                )}
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 4 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
@@ -406,7 +422,7 @@ export default function Round2() {
             </div>
           </div>{" "}
           <div className="flex flex-col items-center gap-2">
-            <div className="flex gap-3 items-center">
+            <div className="flex items-center gap-3">
               <h2 className="text-center font-semibold">Puzzle 5</h2>
               {reveal?.hintNo === 5 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
@@ -460,8 +476,9 @@ export default function Round2() {
                   })
                 }
                 placeholder="Latitude"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.latitude
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
@@ -477,8 +494,9 @@ export default function Round2() {
                   })
                 }
                 placeholder="Longitude"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.longitude
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
@@ -499,8 +517,9 @@ export default function Round2() {
                   })
                 }
                 placeholder="Passcode"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.asciiResult
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
@@ -571,23 +590,24 @@ export default function Round2() {
                   })
                 }
                 placeholder="Badge"
-                className={"w-full rounded-full border border-gray-300 p-2 "+
-                (correct
+                className={
+                  "w-full rounded-full border border-gray-300 p-2 " +
+                  (correct
                     ? correct?.badge
                       ? "border-2 border-green-500"
                       : "border-2 border-red-500"
                     : "")
                 }
               />
-                {correct ? (
-                    correct?.badge ? (
-                    <TiTick className="h-6 w-6 text-green-500" />
-                    ) : (
-                    <RxCross2 className="h-6 w-6 text-red-500" />
-                    )
+              {correct ? (
+                correct?.badge ? (
+                  <TiTick className="h-6 w-6 text-green-500" />
                 ) : (
-                    <></>
-                )}
+                  <RxCross2 className="h-6 w-6 text-red-500" />
+                )
+              ) : (
+                <></>
+              )}
               {reveal?.hintNo === 7 ? (
                 <div className="w-full max-w-sm rounded-xl border p-2">
                   Hint No. {reveal.hintNo}
