@@ -65,13 +65,13 @@ const SignPage: FunctionComponent = () => {
       </nav>
       <main className="max-w-screen flex h-auto flex-col items-center justify-center gap-4 bg-black">
         <div className="shadow-custom flex min-h-screen w-full flex-col items-center justify-center bg-[url('/assets/mainbg.jpeg')] bg-cover bg-center py-20 text-center ">
-          {/* <Image
-            src={"/assets/flc_logo.png"}
+          <Image
+            src={"/assets/Nitte NMAMIT Logo - White.png"}
             alt="flc logo"
             height={300}
             width={400}
-            className="mb-14"
-          /> */}
+            className="mb-14 px-4"
+          />
           <h1 className="px-2 text-4xl font-bold text-white">
             Finite Loop Club presents
           </h1>
