@@ -72,25 +72,25 @@ const SignPage: FunctionComponent = () => {
             width={400}
             className="mb-14 px-4"
           />
-          <h1 className="px-2 text-4xl font-bold text-white">
+          <h1 className="px-2 text-2xl md:text-4xl font-bold text-white">
             Finite Loop Club presents
           </h1>
 
           <h1 className="title mb-2 flex text-4xl font-bold md:text-5xl">
-            <div className="neonText my-8 text-5xl  tracking-wide">
+            <div className="neonText my-8 text-4xl md:text-5xl  tracking-wide">
               Digital-Hunt
             </div>
           </h1>
 
-          <h2 className="text-3xl text-white">
+          <h2 className="text-sm md:text-lg px-3 text-white">
             Read instructions before you start to play
           </h2>
 
           <div className="absolute bottom-4 animate-bounce ">
             <Link href="/#instructions">
               <svg
-                width="50"
-                height="50"
+                width="35"
+                height="35"
                 viewBox="0 0 74 74"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
