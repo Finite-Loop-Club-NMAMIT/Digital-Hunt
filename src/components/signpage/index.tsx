@@ -60,9 +60,9 @@ const images = [
 const SignPage: FunctionComponent = () => {
   return (
     <>
-      {/* <nav className="w-screen">
+      <nav className="w-screen">
         <Navbar />
-      </nav> */}
+      </nav>
       <main className="max-w-screen flex h-auto flex-col items-center justify-center gap-4 bg-black">
         <div className="shadow-custom flex min-h-screen w-full flex-col items-center justify-center bg-[url('/assets/mainbg.jpeg')] bg-cover bg-center py-20 text-center ">
           <Image
