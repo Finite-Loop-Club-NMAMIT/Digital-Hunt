@@ -40,7 +40,7 @@ export default function Instagram() {
             sizes="76x76"
             href="https://static.cdninstagram.com/rsrc.php/v3/yR/r/lam-fZmwmvn.png"
           ></link>
-          <meta name="description" content="Intsgram not Instagram ..." />
+          <meta name="description" content="Intsagram not Instagram ..." />
         </Head>
 
         <main className="flex min-h-screen flex-col justify-between pb-16 pt-28">
