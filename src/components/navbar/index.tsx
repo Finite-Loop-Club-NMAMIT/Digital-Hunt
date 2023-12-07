@@ -20,7 +20,7 @@ const NavItems = [
 const Navbar: React.FC = () => {
   return (
     <>
-      <section className="fixed z-50 hidden w-full justify-between px-6 py-3 text-white backdrop-blur-md md:flex ">
+      <section className="fixed top-0 z-50 hidden w-full justify-between px-6 py-3 text-white backdrop-blur-md md:flex ">
         <Link href="/">
           <div className="flex items-center space-x-4">
             <img
@@ -55,14 +55,14 @@ const Navbar: React.FC = () => {
         </div>
       </section>
 
-      <div className="fixed z-50 flex w-full px-4 backdrop-blur-lg md:hidden">
+      <div className="fixed top-0 z-50 flex w-full px-4 backdrop-blur-lg md:hidden">
         <div className="flex">
           <div className="pt-2">
             <Link href="/">
               <img
                 src="/assets/flc_logo_crop.png"
                 className=" w-16"
-                alt="logo"
+                alt="logo "
               />
             </Link>
           </div>

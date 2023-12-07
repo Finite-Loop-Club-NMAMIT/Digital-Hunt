@@ -6,6 +6,7 @@ import "~/styles/globals.css";
 import Head from "next/head";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { useEffect } from "react";
+import UniNavbar from "~/components/navbar/universalNavbar";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -30,7 +31,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://intsagram.tech/" />
-          <meta property="og:image" content="https://www.intsagram.tech/og-digital.jpeg" />
+          <meta
+            property="og:image"
+            content="https://www.intsagram.tech/og-digital.jpeg"
+          />
           <title>Digital Hunt</title>
           <link
             data-default-icon="https://www.notion.so/image/https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F7922%2F7922150.png?table=block&id=7599f2bc-189b-4f00-bca6-2f5fe0e28925&spaceId=e90b889a-8891-4f8b-b666-2f7c5bc7c2a3&width=250&userId=94908eb9-60b8-46a3-8c7e-aa8f60aeb215&cache=v2"
@@ -39,6 +43,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
             href="https://www.notion.so/image/https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F7922%2F7922150.png?table=block&id=7599f2bc-189b-4f00-bca6-2f5fe0e28925&spaceId=e90b889a-8891-4f8b-b666-2f7c5bc7c2a3&width=250&userId=94908eb9-60b8-46a3-8c7e-aa8f60aeb215&cache=v2"
           ></link>
         </Head>
+        <UniNavbar />
         <Component {...pageProps} />
       </SessionProvider>
     </CookiesProvider>
